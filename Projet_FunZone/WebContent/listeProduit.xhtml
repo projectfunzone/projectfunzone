@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+<h:head>
+<meta charset="UTF-8"/>
+<title>Afficher la liste des Produits</title>
+
+</h:head>
+<body>
+	<ui:insert>
+		<ui:include src="/templates/header.xhtml" />
+	</ui:insert>
+
+	<h1>Liste des produits</h1>
+	<h:form>
+		<p:dataTable var="c" value="#{sessionScope.produitsListe}">
+			<p:column headerText="Id">
+				<h:outputText value="#{pMB.produit.idProduit}" />
+			</p:column>
+
+			<p:column headerText="Designation">
+				<h:outputText value="#{pMB.produit.designation}" />
+			</p:column>
+
+			<p:column headerText="Description">
+				<h:outputText value="#{pMB.produit.description}" />
+			</p:column>
+			
+			<p:column headerText="Prix">
+				<h:outputText value="#{pMB.produit.prix}" />
+			</p:column>
+
+			<p:column headerText="Quantite">
+				<h:outputText value="#{pMB.produit.quantite}" />
+			</p:column>
+
+			<p:column headerText="Image">
+				<p:graphicImage value="#{pMB.produit.image}" style="width:100px; height:100px"/>
+			</p:column>
+
+		</p:dataTable>
+	</h:form>
+
+</body>
+</html>

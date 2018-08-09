@@ -30,16 +30,21 @@ public class Produit implements Serializable{
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	@Column(name="id_produit")
 	private Long idProduit;
+	
 	private String designation;
 	private String description;
 	private double prix;
 	private int quantite;
+	
 	@Transient
 	private boolean selectionne;
+	
 	@Lob
 	@Column(name="PROD_PIC")
 	private byte[] photo;
 	
+	@Transient
+	private String image;
 	/**
 	 * Transformation de l'association UML en JAVA entre Produit et Categorie avec propagation
 	 * des opérations sur les Entity d'association
@@ -199,6 +204,35 @@ public class Produit implements Serializable{
 	public void setPhoto(byte[] photo) {
 		this.photo = photo;
 	}
+	
+	/**
+	 * @return the categorie
+	 */
+	public Categorie getCategorie() {
+		return categorie;
+	}
+
+	/**
+	 * @param categorie
+	 */
+	public void setCategorie(Categorie categorie) {
+		this.categorie = categorie;
+	}
+	
+	/**
+	 * @return the image
+	 */
+	public String getImage() {
+		return image;
+	}
+
+	/**
+	 * @param image
+	 */
+	public void setImage(String image) {
+		this.image = image;
+	}
+	
 
 	//methode
 	@Override

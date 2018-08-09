@@ -2,6 +2,9 @@ package fr.adaming.dao;
 
 import java.util.List;
 
+import javax.ejb.Local;
+
+import fr.adaming.model.Categorie;
 import fr.adaming.model.Produit;
 
 /**
@@ -9,12 +12,32 @@ import fr.adaming.model.Produit;
  * Methode interface Dao pour les produits
  *
  */
+@Local
 public interface IProduitDao {
 	
 	/*
-	 * methode permettant de recuperer la liste des produits disponibles
+	 * methode permettant de recuperer la liste des produits disponibles sur le site
 	 */
-	public List<Produit> getAllProduits();
+	public List<Produit> getAllProduits(Categorie c);
 	
-
+	/*
+	 * methode permettant d'ajouter un produit
+	 */
+	public Produit addProduit(Produit pr);
+	
+	/*
+	 * methode permettant de modifier un produit
+	 */
+	public int updateProduit(Produit pr);
+	
+	/*
+	 * methode permettant de supprimer un produit
+	 */
+	public int deleteProduit(Produit pr);
+	
+	/*
+	 * methode permettant de rechercher un produit
+	 */
+	public Produit getProduitbyId (Produit pr);
+	
 }

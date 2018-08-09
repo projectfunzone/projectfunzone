@@ -34,7 +34,7 @@ public class Categorie implements Serializable {
 	private String nomCategorie;
 	
 	@Lob()
-	@Column(name="CAT_PIC")
+	@Column(name="PROD_PIC")
 	private byte[] photo;
 	private String description;
 	

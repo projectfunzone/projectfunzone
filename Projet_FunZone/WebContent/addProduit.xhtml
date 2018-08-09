@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+<h:head>
+	<meta charset="UTF-8" />
+	<title>Ajouter une Produit</title>
+</h:head>
+<body>
+	<ui:insert>
+		<ui:include src="/templates/header.xhtml" />
+	</ui:insert>
+
+	<h1>Créer un produit</h1>
+	<h:form enctype="multipart/form-data">
+		<h:panelGrid columns="2">
+			Designation du produit : <h:inputText
+				value="#{pMB.produit.designation}" />
+			Description : <h:inputText value="#{pMB.produit.description}" />
+			Prix : <h:inputText value="#{pMB.produit.prix}" />
+			Quantite : <h:inputText value="#{pMB.produit.quantite}" />
+			Photo : <p:fileUpload value="#{pMB.file}" mode="simple"
+				skinSimple="true" />
+			<h:commandButton value="ajouter" action="#{pMB.addProduit}" />
+		</h:panelGrid>
+	</h:form>
+	<h1 style="color: red; text-align: center">
+		<h:messages />
+	</h1>
+
+</body>
+</html>
