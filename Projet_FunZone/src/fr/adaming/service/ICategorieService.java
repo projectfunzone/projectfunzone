@@ -41,4 +41,9 @@ public interface ICategorieService {
 	 * methode de recherche d'une categorie en fonction de son nom
 	 */
 	public Categorie getCategoriebyNomCategorie(Categorie c);
+	
+	/*
+	 * methode de recherche d'une categorie en fonction de son id
+	 */
+	public Categorie getCategoriebyId(Categorie c);
 }

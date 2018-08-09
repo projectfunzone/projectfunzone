@@ -34,8 +34,14 @@ public interface ICategorieDao {
 	public int deleteCategorie(Categorie c);
 	
 	/*
-	 * methode permettant de rechercher une categorie de produit
+	 * methode permettant de rechercher une categorie de produit par son nom
 	 */
 	public Categorie getCategoriebyNomCategorie (Categorie c);
+	
+	
+	/*
+	 * methode permettant de rechercher une categorie de produit par son id
+	 */
+	public Categorie getCategoriebyId (Categorie c);
 	
 }

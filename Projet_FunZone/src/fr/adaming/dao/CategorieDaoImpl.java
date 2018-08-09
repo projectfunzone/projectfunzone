@@ -67,13 +67,14 @@ public class CategorieDaoImpl implements ICategorieDao {
 	@Override
 	public int updateCategorie(Categorie c) {
 
-		String req = "UPDATE Categorie as cat SET cat.nomCategorie =:pNomCat, cat.description =:pDescription, cat.photo=:pPhotoC cat.WHERE cat.idCategorie =:pIdC";
+		String req = "UPDATE Categorie as cat SET cat.nomCategorie =:pNomCat, cat.description =:pDescription, cat.photo=:pPhotoC WHERE cat.idCategorie =:pIdC";
 
 		Query query = em.createQuery(req);
 
 		query.setParameter("pNomCat", c.getNomCategorie());
 		query.setParameter("pDescription", c.getDescription());
 		query.setParameter("pPhotoC", c.getPhoto());
+		query.setParameter("pIdC", c.getIdCategorie());
 
 		return query.executeUpdate();
 	}
@@ -86,13 +87,13 @@ public class CategorieDaoImpl implements ICategorieDao {
 	@Override
 	public int deleteCategorie(Categorie c) {
 
-		 String req = "DELETE FROM Categorie cat WHERE cat.id=:pIdC";
+		 String req = "DELETE FROM Categorie cat WHERE cat.nomCategorie=:pNomCategorie";
 		
 		 // recuperer la query
 		 Query query = em.createQuery(req);
 		
 		 // assignation des params
-		 query.setParameter("pIdC", c.getIdCategorie());
+		 query.setParameter("pNomCategorie", c.getNomCategorie());
 
 		return query.executeUpdate();
 	}
@@ -109,6 +110,22 @@ public class CategorieDaoImpl implements ICategorieDao {
 		Query query = em.createQuery(req);
 		
 		query.setParameter("pNomCategorie", c.getNomCategorie());
+		
+		return (Categorie) query.getSingleResult();
+	}
+	
+	/*
+	 * (non-Javadoc)
+	 * @see fr.adaming.dao.ICategorieDao#getCategoriebyNomCategorie(fr.adaming.model.Categorie)
+	 */
+	@Override
+	public Categorie getCategoriebyId(Categorie c) {
+
+		String req = "SELECT cat FROM Categorie as cat WHERE cat.idCategorie=:pIdC";
+		
+		Query query = em.createQuery(req);
+		
+		query.setParameter("pIdC", c.getIdCategorie());
 		
 		return (Categorie) query.getSingleResult();
 	}

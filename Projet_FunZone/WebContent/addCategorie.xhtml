@@ -7,23 +7,21 @@
 	xmlns:p="http://primefaces.org/ui">
 <h:head>
 <meta charset="UTF-8"/>
-<title>Modifier une Categorie</title>
+<title>Ajouter une Categorie</title>
 </h:head>
 <body>
 	<ui:insert>
 		<ui:include src="/templates/header.xhtml" />
 	</ui:insert>
 
-	<h1>Modifier une catégorie</h1>
+	<h1>Créer une catégorie</h1>
 	<h:form>
 		<h:panelGrid columns="2">
-			ID : <h:inputText
-				value="#{catMB.categorie.idCategorie}" />
 			Nom de la catégorie : <h:inputText
 				value="#{catMB.categorie.nomCategorie}" />
 			Description : <h:inputText value="#{catMB.categorie.description}" />
 
-			<h:commandButton value="modifier" action="#{catMB.updateCategorie}" />
+			<h:commandButton value="ajouter" action="#{catMB.addCategorie}" />
 		</h:panelGrid>
 	</h:form>
 	<h1 style="color: red; text-align: center">

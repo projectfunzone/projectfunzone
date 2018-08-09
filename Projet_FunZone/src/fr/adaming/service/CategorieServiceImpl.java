@@ -84,6 +84,14 @@ public class CategorieServiceImpl implements ICategorieService {
 		return cDao.getCategoriebyNomCategorie(c);
 	}
 	
+	/*
+	 * (non-Javadoc)
+	 * @see fr.adaming.service.ICategorieService#getCategoriebyId(fr.adaming.model.Categorie)
+	 */
+	@Override
+	public Categorie getCategoriebyId(Categorie c) {
+		return cDao.getCategoriebyId(c);
+	}
 	
 
 }

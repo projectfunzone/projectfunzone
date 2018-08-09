@@ -3,6 +3,7 @@ package fr.adaming.managedBeans;
 import java.io.Serializable;
 import java.util.List;
 
+import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
@@ -18,7 +19,7 @@ import fr.adaming.service.ICategorieService;
  * Manager des Categories
  */
 @SuppressWarnings("serial")
-@ManagedBean(name = "CatMB")
+@ManagedBean(name = "catMB")
 @RequestScoped
 public class CategorieManagedBean implements Serializable {
 
@@ -28,7 +29,9 @@ public class CategorieManagedBean implements Serializable {
 	HttpSession maSession;
 	private Categorie categorie;
 	private boolean indice;
+	private List<Categorie> listeCategorie;
 
+	
 	/*
 	 * Transformation de l'association UML en java
 	 */
@@ -44,6 +47,11 @@ public class CategorieManagedBean implements Serializable {
 		this.indice = false;
 	}
 
+	@PostConstruct
+	public void init(){
+		this.listeCategorie = cService.getAllCategories();
+	}
+	
 	/*
 	 * Declaration des getteurs et setteurs
 	 */
@@ -77,6 +85,20 @@ public class CategorieManagedBean implements Serializable {
 	public void setIndice(boolean indice) {
 		this.indice = indice;
 	}
+	
+	/**
+	 * @return the listeCategorie
+	 */
+	public List<Categorie> getListeCategorie() {
+		return listeCategorie;
+	}
+
+	/**
+	 * @param listeCategorie the listeCategorie to set
+	 */
+	public void setListeCategorie(List<Categorie> listeCategorie) {
+		this.listeCategorie = listeCategorie;
+	}
 
 	/*
 	 * ajouter une nouvelle categorie au site
@@ -89,20 +111,9 @@ public class CategorieManagedBean implements Serializable {
 		if (cService.addCategorie(this.categorie).getIdCategorie() != 0) {
 
 			/*
-			 * mettre à jour la liste
-			 */
-			List<Categorie> listeCategories = cService.getAllCategories();
-
-			/*
-			 * ajouter la liste des categories dans la session
-			 */
-			FacesContext.getCurrentInstance().getExternalContext().getSessionMap().put("categoriesListe",
-					listeCategories);
-
-			/*
 			 * envoie vers la page XHTML accueil de l'administrateur
 			 */
-			return "accueilAdmin";
+			return "accueil";
 
 		} else {
 
@@ -119,20 +130,9 @@ public class CategorieManagedBean implements Serializable {
 		if (cService.updateCategorie(this.categorie) != 0) {
 
 			/*
-			 * mettre à jour la liste
-			 */
-			List<Categorie> listeCategories = cService.getAllCategories();
-
-			/*
-			 * ajouter la liste des categories dans la session
-			 */
-			FacesContext.getCurrentInstance().getExternalContext().getSessionMap().put("categoriesListe",
-					listeCategories);
-
-			/*
 			 * envoie vers la page XHTML accueil de l'administrateur
 			 */
-			return "accueilAdmin";
+			return "accueil";
 
 		} else {
 
@@ -148,25 +148,15 @@ public class CategorieManagedBean implements Serializable {
 
 		if (cService.deleteCategorie(this.categorie) != 0) {
 
-			/*
-			 * mettre à jour la liste
-			 */
-			List<Categorie> listeCategories = cService.getAllCategories();
-
-			/*
-			 * ajouter la liste des categories dans la session
-			 */
-			FacesContext.getCurrentInstance().getExternalContext().getSessionMap().put("categoriesListe",
-					listeCategories);
-
+			
 			/*
 			 * envoie vers la page XHTML accueil de l'administrateur
 			 */
-			return "accueilAdmin";
+			return "accueil";
 
 		} else {
 
-			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Supression invalide"));
+			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Suppression invalide"));
 			/*
 			 * renvoie vers la page XHTML d'ajout d'une categorie
 			 */
@@ -201,7 +191,37 @@ public class CategorieManagedBean implements Serializable {
 		/*
 		 * envoie vers la page XHTML recherche mise à jour avec le resultat de la recherche
 		 */
-		return "rechercheCategorie";
+		return "searchCategorie";
+	}
+	
+	public String searchCategoriebyId() {
+
+		/*
+		 * recherche et stockage de la categorie recherchée
+		 */
+		Categorie cSearch = cService.getCategoriebyId(this.categorie);
+
+		/*
+		 * On test le bon résultat de la recherche
+		 */
+		if (cSearch != null) {
+
+			/*
+			 * on stocke la recherche dans l'attribut du ManagedBean
+			 */
+			this.indice = true;
+			this.categorie = cSearch;
+
+		} else {
+
+			this.indice = false;
+			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Supression invalide"));
+
+		}
+		/*
+		 * envoie vers la page XHTML recherche mise à jour avec le resultat de la recherche
+		 */
+		return "searchCategorie";
 	}
 
 }
