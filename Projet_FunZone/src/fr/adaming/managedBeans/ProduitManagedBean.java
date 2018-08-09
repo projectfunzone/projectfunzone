@@ -54,7 +54,7 @@ public class ProduitManagedBean {
 
 	@PostConstruct
 	public void init(){
-		this.listeProduit = pService.getAllProduits(produit.getCategorie());
+		this.listeProduit = pService.getAllProduits(categorie);
 	}
 	
 	/*

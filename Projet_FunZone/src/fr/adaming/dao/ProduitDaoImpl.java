@@ -38,11 +38,12 @@ public class ProduitDaoImpl implements IProduitDao {
 		 * Créer la requete de recuperation de la methode
 		 */
 		String req = "SELECT pr FROM Produit as pr WHERE pr.categorie.idCategorie =:pIdC";
-
+		
 		/*
 		 * Créer la query pour envoyer la requete
 		 */
 		Query query = em.createQuery(req);
+		query.setParameter("pIdC", c.getIdCategorie());
 
 		List<Produit> listeQuery = query.getResultList();
 		
