@@ -32,4 +32,20 @@ public interface IClientDao {
 	public List<Client> getClientByIdNom(Client cl);
 	
 
+	/**
+	 * Permet de créer un client dans la base de donnée
+	 * @return
+	 */
+	public Client addClient(Client cl);
+	
+	
+	/**
+	 * Permet de supprimer un client dans la base de donnée
+	 * retourne 1 si supprimé, retourne 0 si non supprimé
+	 * @return
+	 */
+	public int deleteClient(Client cl);
+	
+	
+	
 }

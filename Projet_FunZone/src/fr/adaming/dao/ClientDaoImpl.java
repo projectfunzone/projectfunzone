@@ -56,4 +56,24 @@ public class ClientDaoImpl implements IClientDao {
 		return query.getResultList();
 	}
 
+	@Override
+	public Client addClient(Client cl) {
+		em.persist(cl);
+		return cl;
+	}
+
+	@Override
+	public int deleteClient(Client cl) {
+		
+		try {
+			Client clOut=em.find(Client.class, cl.getIdClient());
+			em.remove(clOut);
+			return 1;
+		} catch (Exception exce) {
+			exce.printStackTrace();
+		
+		}
+		return 0;
+	}
+
 }

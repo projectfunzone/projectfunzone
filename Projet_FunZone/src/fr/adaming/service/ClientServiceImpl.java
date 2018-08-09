@@ -41,8 +41,27 @@ public class ClientServiceImpl implements IClientService {
 
 	@Override
 	public List<Client> getClientByIdNom(Client cl) {
-		
+
 		return clDao.getClientByIdNom(cl);
+	}
+
+	@Override
+	public Client addClient(Client cl) {
+
+		Client clOut = clDao.addClient(cl);
+
+		// on compare l'id du client en sortie, car si il est différent de 0,
+		// c'est que le client a été créé
+		if (clOut.getIdClient() != 0) {
+			return clOut;
+		}
+		return null;
+	}
+
+	@Override
+	public int deleteClient(Client cl) {
+
+		return clDao.deleteClient(cl);
 	}
 
 }

@@ -35,6 +35,8 @@ public class ClientManagedBean implements Serializable {
 
 	private List<Client> listeGetClient;
 
+	private String mdpClientVerif;
+
 	/**
 	 * permet de récupérer la liste des clients au moment de l'instanciation du
 	 * managedBean
@@ -97,6 +99,21 @@ public class ClientManagedBean implements Serializable {
 		this.listeAllClient = listeAllClient;
 	}
 
+	/**
+	 * @return the mdpClientVerif
+	 */
+	public String getMdpClientVerif() {
+		return mdpClientVerif;
+	}
+
+	/**
+	 * @param mdpClientVerif
+	 *            the mdpClientVerif to set
+	 */
+	public void setMdpClientVerif(String mdpClientVerif) {
+		this.mdpClientVerif = mdpClientVerif;
+	}
+
 	// autre méthode
 	/**
 	 * Permet de récupérer un client par son id. retourne la même page xhtml,
@@ -141,4 +158,43 @@ public class ClientManagedBean implements Serializable {
 
 	}
 
+	/**
+	 * Permet de créer un client. Met la liste des clients à jour dans la page "listeAllClient.xhtml"
+	 * @return
+	 */
+	public String addClient() {
+
+		Client clOut = clService.addClient(this.cl);
+
+		if (clOut != null) {
+			this.listeAllClient = clService.getAllClient();
+
+			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Le compte a bien été crée"));
+		} else {
+			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Une erreur s'est produit"));
+		}
+
+		return "";
+	}
+	
+	/**
+	 * Permet de supprimer un client. Met la liste des clients à jour dans la page "listeAllClient.xhtml"
+	 * si le retour de la méthode est =! 0, la suppression a fonctionné
+	 * sinon, si ==0 c'est que la suppression n'a pas fonctionner
+	 * @return
+	 */
+	public String deleteClient() {
+		int verif = clService.deleteClient(this.cl);
+		
+		if (verif !=0 ){
+			this.listeAllClient = clService.getAllClient();
+
+			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Le compte a bien été supprimé"));
+		} else {
+			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Une erreur s'est produit"));
+		}
+
+		return "";
+		
+	}
 }

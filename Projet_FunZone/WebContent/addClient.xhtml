@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+<h:head>
+	<title>Créer un compte</title>
+</h:head>
+<h:body>
+	<ui:insert>
+		<ui:include src="/templates/header.xhtml" />
+	</ui:insert>
+
+	<h1>Créer un compte client</h1>
+
+	<h:form>
+		<h:panelGrid columns="2">
+		Nom*: <p:inputText value="#{clMB.cl.nomClient}" label="Nom"
+				required="true" />
+		Adresse: <p:inputText value="#{clMB.cl.adresse}" label="Adresse" />
+		Téléphone: <p:inputText value="#{clMB.cl.tel}" label="Téléphone" />
+		Email*: <p:inputText value="#{clMB.cl.email}" label="Email"
+				required="true" />
+		Mot de passe*: <p:password id="pwd1"
+				match="pwd2" label="Mot de passe" required="true" />
+		Confirmer le mot de passe*:<p:password id="pwd2"
+				value="#{clMB.cl.mdpClient}" label="Confirmer le mot de passe"
+				required="true" />
+		</h:panelGrid>
+
+		<p:commandButton value="Créer" action="#{clMB.addClient}"
+			update="@all" />
+	</h:form>
+
+	<h1 style="color: red; text-align: center">
+		<h:messages />
+	</h1>
+	
+</h:body>
+</html>
