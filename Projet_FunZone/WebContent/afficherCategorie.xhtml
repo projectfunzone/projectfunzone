@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+<head>
+<meta charset="ISO-8859-1">
+<title>Afficher la liste des Categories</title>
+</head>
+<body>
+	<ui:insert>
+		<ui:include src="/templates/header.xhtml" />
+	</ui:insert>
+
+	<h1>Liste des catégories</h1>
+	<h:form>
+		<p:dataTable var="c" value="#{sessionScope.categoriesListe}">
+			<p:column headerText="Id">
+				<h:outputText value="#{c.idCategorie}" />
+			</p:column>
+
+			<p:column headerText="Nom">
+				<h:outputText value="#{c.nomCategorie}" />
+			</p:column>
+
+			<p:column headerText="Description">
+				<h:outputText value="#{c.description}" />
+			</p:column>
+
+			<p:column headerText="Image">
+				<h:outputText value="#{c.photo}" />
+			</p:column>
+
+		</p:dataTable>
+	</h:form>
+
+</body>
+</html>

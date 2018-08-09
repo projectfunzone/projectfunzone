@@ -30,7 +30,7 @@ public class Categorie implements Serializable {
 	@Column(name = "id_categorie")
 	private Long idCategorie;
 	private String nomCategorie;
-	@Lob
+	@Lob()
 	@Column(name="CAT_PIC")
 	private byte[] photo;
 	private String description;

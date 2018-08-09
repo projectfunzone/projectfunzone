@@ -6,6 +6,7 @@ package fr.adaming.service;
 import java.util.List;
 
 import javax.ejb.EJB;
+import javax.ejb.Stateful;
 
 import fr.adaming.dao.ICategorieDao;
 import fr.adaming.model.Categorie;
@@ -14,6 +15,7 @@ import fr.adaming.model.Categorie;
  * @author Thibault Definition des methodes services pour la classe Categorie
  *
  */
+@Stateful
 public class CategorieServiceImpl implements ICategorieService {
 
 	/*
