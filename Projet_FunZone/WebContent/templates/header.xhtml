@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+<h:head>
+	<title></title>
+</h:head>
+<h:body>
+
+	<h:form>
+		<p:menubar>
+
+			<p:menuitem value="Accueil" url="accueil.xhtml" />
+
+			<p:submenu label="Clients" icon="ui-icon-document">
+				<p:menuitem value="Liste Client" url="listeAllClient.xhtml" />
+				<p:menuitem value="Ajouter un client" url="addClient.xhtml" />
+				<p:menuitem value="Supprimer un client" url="deleteClient.xhtml" />
+				<p:menuitem value="Modifier un client" url="updateClient.xhtml" />
+				<p:menuitem value="Rechercher un client" url="getClientBy.xhtml" />
+			</p:submenu>
+
+
+			<p:submenu label="Commande">
+				<p:menuitem value="Liste Commande" url=".xhtml" />
+				<p:menuitem value="Créer" url=".xhtml" />
+				<p:menuitem value="Supprimer" url=".xhtml" />
+				<p:menuitem value="Modifier" url=".xhtml" />
+				<p:menuitem value="Rechercher" url=".xhtml" />
+			</p:submenu>
+
+			<p:submenu label="Produit">
+				<p:menuitem value="Liste" url="#" />
+				<p:menuitem value="Créer" url="#" />
+				<p:menuitem value="Supprimer" url="#" />
+				<p:menuitem value="Modifier" url="#" />
+				<p:menuitem value="Rechercher" url="#" />
+			</p:submenu>
+
+			<p:submenu label="Catégorie">
+				<p:menuitem value="Liste" url="#" />
+				<p:menuitem value="Créer" url="#" />
+				<p:menuitem value="Supprimer" url="#" />
+				<p:menuitem value="Modifier" url="#" />
+				<p:menuitem value="Rechercher" url="#" />
+			</p:submenu>
+
+			<p:submenu label="Connexion admin">
+				<p:menuitem value="Connexion" url="#" />
+			</p:submenu>
+
+
+
+
+
+
+		</p:menubar>
+	</h:form>
+
+</h:body>
+</html>
