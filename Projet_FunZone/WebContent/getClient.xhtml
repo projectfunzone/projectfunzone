@@ -9,13 +9,22 @@
 	<title></title>
 </h:head>
 <h:body>
-
 	<ui:insert>
 		<ui:include src="/templates/header.xhtml" />
 	</ui:insert>
 
-<h1>Liste des clients de FunZone</h1>
-	<p:dataTable var="cl" value="#{clMB.listeAllClient}">
+	<h1>Rechercher un client dans la base de donnée</h1>
+
+	<h:form>
+		<h:panelGrid columns="2">
+		Par id: <p:inputText value="#{clMB.cl.idClient}" />
+		</h:panelGrid>
+		<p:commandButton value="Rechercher" action="#{clMB.getClientById}" update="@all"/>
+	</h:form>
+
+
+
+	<p:dataTable var="cl" value="#{clMB.cl}">
 
 		<p:column headerText="Id">
 			<h:outputText value="#{cl.idClient}" />
@@ -37,6 +46,10 @@
 			<h:outputText value="#{cl.tel}" />
 		</p:column>
 	</p:dataTable>
+
+	<h1 style="color: red; text-align: center">
+		<h:messages />
+	</h1>
 
 </h:body>
 </html>

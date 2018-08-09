@@ -37,7 +37,7 @@ public class Commande implements Serializable {
 	 * Transformation de l'association UML en JAVA
 	 */
 	@ManyToOne
-	@JoinColumn(name="commande_id", referencedColumnName="id_client")
+	@JoinColumn(name="client_id", referencedColumnName="id_client")
 	private Client client;
 	
 	/**

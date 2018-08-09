@@ -24,11 +24,23 @@ public class ClientDaoImpl implements IClientDao {
 	@Override
 	public List<Client> getAllClient() {
 
-		String req="SELECT cl FROM clients";
+		String req="SELECT cl FROM Client cl";
 		
 		Query query=em.createQuery(req);
 		
 		return query.getResultList();
+	}
+
+	@Override
+	public Client getClientById(Client cl) {
+		
+		return em.find(Client.class, cl.getIdClient());
+	}
+
+	@Override
+	public List<Client> getClientByIdNom(Client cl) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }

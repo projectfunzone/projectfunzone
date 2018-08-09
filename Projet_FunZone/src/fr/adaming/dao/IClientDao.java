@@ -20,5 +20,16 @@ public interface IClientDao {
 	 */
 	public List<Client> getAllClient ();
 	
+	/**
+	 * Permet de rechercher un client par son id. Génère un objet Client
+	 */
+	public Client getClientById(Client cl);
+	
+	/**
+	 * Permet de rechercher un client par son nom. Genere une liste de Client
+	 * @return
+	 */
+	public List<Client> getClientByIdNom(Client cl);
+	
 
 }
