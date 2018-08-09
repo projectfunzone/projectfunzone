@@ -66,8 +66,14 @@ public class ClientServiceImpl implements IClientService {
 
 	@Override
 	public int updateClient(Client cl) {
-		// TODO Auto-generated method stub
+
 		return clDao.updateClient(cl);
+	}
+
+	@Override
+	public int updateClientMdp(Client cl) {
+
+		return clDao.updateClientMdp(cl);
 	}
 
 }

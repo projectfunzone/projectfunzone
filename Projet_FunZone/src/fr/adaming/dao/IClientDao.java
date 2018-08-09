@@ -48,12 +48,17 @@ public interface IClientDao {
 	
 	
 	/**
-	 * Permet de modifier un compte client dans la base de donnée
+	 * Permet de modifier un compte client (toutes les infos sauf le mdp) dans la base de donnée
 	 * retourne 1 si modifié, retourne 0 si non modifié
 	 * @return
 	 */
 	public int updateClient(Client cl);
 	
-	
+	/**
+	 * Permet de modifier le mdp d'un client  dans la base de donnée
+	 * retourne 1 si modifié, retourne 0 si non modifié
+	 * @return
+	 */
+	public int updateClientMdp(Client cl);
 	
 }

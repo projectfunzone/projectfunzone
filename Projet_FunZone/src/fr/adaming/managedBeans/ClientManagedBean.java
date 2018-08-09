@@ -218,5 +218,22 @@ public class ClientManagedBean implements Serializable {
 		return "";
 	}
 	
-	
+	/**
+	 * Permet de modifier le mdp d'un client.
+	 * si le retour de la méthode est =! 0, la modif a fonctionné
+	 * sinon, si ==0 c'est que la modif n'a pas fonctionner
+	 * @return
+	 */
+	public String updateClientMdp() {
+		int verif = clService.updateClientMdp(this.cl);
+		
+		if (verif != 0) {
+			
+			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Le mot de passe a été modifié"));
+		}else {
+			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Une erreur s'est produit"));
+		}
+
+		return "";
+	}
 }

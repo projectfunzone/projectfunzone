@@ -52,7 +52,7 @@ public class ClientDaoImpl implements IClientDao {
 		query.setParameter("pId", cl.getIdClient());
 		query.setParameter("pNom", cl.getNomClient());
 
-		//retourner la liste de résultat
+		// retourner la liste de résultat
 		return query.getResultList();
 	}
 
@@ -64,31 +64,42 @@ public class ClientDaoImpl implements IClientDao {
 
 	@Override
 	public int deleteClient(Client cl) {
-		
+
 		try {
-			Client clOut=em.find(Client.class, cl.getIdClient());
+			Client clOut = em.find(Client.class, cl.getIdClient());
 			em.remove(clOut);
 			return 1;
 		} catch (Exception exce) {
 			exce.printStackTrace();
-		
+
 		}
 		return 0;
 	}
 
 	@Override
 	public int updateClient(Client cl) {
-		String req="UPDATE Client AS cl SET cl.nomClient=:pNom, cl.adresse=:pAdresse, cl.email=:pEmail, cl.tel=:pTel, cl.mdpClient=:pMdp WHERE cl.idClient=:pId";
-		
-		Query query=em.createQuery(req);
-		
+		String req = "UPDATE Client AS cl SET cl.nomClient=:pNom, cl.adresse=:pAdresse, cl.email=:pEmail, cl.tel=:pTel, WHERE cl.idClient=:pId";
+
+		Query query = em.createQuery(req);
+
 		query.setParameter("pNom", cl.getNomClient());
 		query.setParameter("pAdresse", cl.getAdresse());
 		query.setParameter("pEmail", cl.getEmail());
 		query.setParameter("pTel", cl.getTel());
+		query.setParameter("pId", cl.getIdClient());
+
+		return query.executeUpdate();
+	}
+
+	@Override
+	public int updateClientMdp(Client cl) {
+		String req = "UPDATE Client AS cl SET cl.mdpClient=:pMdp WHERE cl.idClient=:pId";
+
+		Query query = em.createQuery(req);
+
 		query.setParameter("pMdp", cl.getMdpClient());
 		query.setParameter("pId", cl.getIdClient());
-		
+
 		return query.executeUpdate();
 	}
 
