@@ -11,6 +11,8 @@ import javax.faces.bean.RequestScoped;
 import javax.faces.context.FacesContext;
 import javax.servlet.http.HttpSession;
 
+import org.primefaces.model.UploadedFile;
+
 import fr.adaming.model.Categorie;
 import fr.adaming.service.ICategorieService;
 
@@ -30,7 +32,7 @@ public class CategorieManagedBean implements Serializable {
 	private Categorie categorie;
 	private boolean indice;
 	private List<Categorie> listeCategorie;
-
+	private UploadedFile file;
 	
 	/*
 	 * Transformation de l'association UML en java
@@ -99,12 +101,31 @@ public class CategorieManagedBean implements Serializable {
 	public void setListeCategorie(List<Categorie> listeCategorie) {
 		this.listeCategorie = listeCategorie;
 	}
+	
+	/**
+	 * @return the file
+	 */
+	public UploadedFile getFile() {
+		return file;
+	}
+
+	/**
+	 * @param the file
+	 */
+	public void setFile(UploadedFile file) {
+		this.file = file;
+	}
 
 	/*
 	 * ajouter une nouvelle categorie au site
 	 */
 	public String addCategorie() {
 
+		/*
+		 * on charge le dossier dans l'attribut photo de la classe Categorie
+		 */
+		this.categorie.setPhoto(file.getContents());
+		
 		/*
 		 * on teste ici l'existence de cet ajout
 		 */

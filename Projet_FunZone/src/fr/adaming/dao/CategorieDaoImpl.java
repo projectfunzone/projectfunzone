@@ -7,6 +7,8 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 
+import org.apache.commons.codec.binary.Base64;
+
 import fr.adaming.model.Categorie;
 
 /*
@@ -41,7 +43,16 @@ public class CategorieDaoImpl implements ICategorieDao {
 		 */
 		Query query = em.createQuery(req);
 
-		return query.getResultList();
+		List<Categorie> listeQuery = query.getResultList();
+		
+		/*
+		 * pour la lire la photo en la transformant le byte en String
+		 */
+		for (Categorie cat : listeQuery) {
+			cat.setImage("data:image/png);base64,"+Base64.encodeBase64String(cat.getPhoto()));
+		}
+		
+		return listeQuery;
 	}
 
 	/*

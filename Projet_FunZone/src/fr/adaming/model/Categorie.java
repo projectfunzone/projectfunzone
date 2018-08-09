@@ -12,6 +12,7 @@ import javax.persistence.Id;
 import javax.persistence.Lob;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 
 /*
  * Definition de la classe Categorie
@@ -29,11 +30,16 @@ public class Categorie implements Serializable {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "id_categorie")
 	private Long idCategorie;
+	
 	private String nomCategorie;
+	
 	@Lob()
 	@Column(name="CAT_PIC")
 	private byte[] photo;
 	private String description;
+	
+	@Transient
+	private String image;
 
 	
 	/**
@@ -157,6 +163,21 @@ public class Categorie implements Serializable {
 	public void setListeProduits(List<Produit> listeProduits) {
 		this.listeProduits = listeProduits;
 	}
+	
+	/**
+	 * @return the image
+	 */
+	public String getImage() {
+		return image;
+	}
+
+	/**
+	 * @param image
+	 */
+	public void setImage(String image) {
+		this.image = image;
+	}
+	
 
 	// Methode
 	@Override
