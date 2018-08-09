@@ -97,4 +97,20 @@ public class CategorieDaoImpl implements ICategorieDao {
 		return query.executeUpdate();
 	}
 
+	/*
+	 * (non-Javadoc)
+	 * @see fr.adaming.dao.ICategorieDao#getCategoriebyId(fr.adaming.model.Categorie)
+	 */
+	@Override
+	public Categorie getCategoriebyNomCategorie(Categorie c) {
+
+		String req = "SELECT cat FROM Categorie as cat WHERE cat.nomCategorie=:pNomCategorie";
+		
+		Query query = em.createQuery(req);
+		
+		query.setParameter("pNomCategorie", c.getNomCategorie());
+		
+		return (Categorie) query.getSingleResult();
+	}
+
 }
