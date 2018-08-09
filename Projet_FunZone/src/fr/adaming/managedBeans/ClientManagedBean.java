@@ -35,7 +35,7 @@ public class ClientManagedBean implements Serializable {
 
 	private List<Client> listeGetClient;
 
-	private String mdpClientVerif;
+	
 
 	/**
 	 * permet de récupérer la liste des clients au moment de l'instanciation du
@@ -99,20 +99,7 @@ public class ClientManagedBean implements Serializable {
 		this.listeAllClient = listeAllClient;
 	}
 
-	/**
-	 * @return the mdpClientVerif
-	 */
-	public String getMdpClientVerif() {
-		return mdpClientVerif;
-	}
 
-	/**
-	 * @param mdpClientVerif
-	 *            the mdpClientVerif to set
-	 */
-	public void setMdpClientVerif(String mdpClientVerif) {
-		this.mdpClientVerif = mdpClientVerif;
-	}
 
 	// autre méthode
 	/**
