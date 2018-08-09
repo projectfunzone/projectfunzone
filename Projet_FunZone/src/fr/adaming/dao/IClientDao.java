@@ -47,5 +47,13 @@ public interface IClientDao {
 	public int deleteClient(Client cl);
 	
 	
+	/**
+	 * Permet de modifier un compte client dans la base de donnée
+	 * retourne 1 si modifié, retourne 0 si non modifié
+	 * @return
+	 */
+	public int updateClient(Client cl);
+	
+	
 	
 }

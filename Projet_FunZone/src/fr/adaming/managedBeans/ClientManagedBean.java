@@ -197,4 +197,26 @@ public class ClientManagedBean implements Serializable {
 		return "";
 		
 	}
+	
+	/**
+	 * Permet de modifier un client. Met la liste des clients à jour dans la page "listeAllClient.xhtml"
+	 * si le retour de la méthode est =! 0, la modif a fonctionné
+	 * sinon, si ==0 c'est que la modif n'a pas fonctionner
+	 * @return
+	 */
+	public String updateClient() {
+		int verif = clService.updateClient(this.cl);
+		
+		if (verif != 0) {
+			this.listeAllClient = clService.getAllClient();
+
+			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("La modif a été prise en compte"));
+		}else {
+			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Une erreur s'est produit"));
+		}
+
+		return "";
+	}
+	
+	
 }

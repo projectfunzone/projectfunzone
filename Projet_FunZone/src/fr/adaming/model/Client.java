@@ -28,6 +28,8 @@ public class Client implements Serializable {
 	private Long idClient;
 	private String nomClient;
 	private String adresse;
+	
+	@Column(unique=true)
 	private String email;
 	private String tel;
 	private String mdpClient;
