@@ -18,13 +18,14 @@
 	<h:form>
 		<h:panelGrid columns="2">
 		Par id: <p:inputText value="#{clMB.cl.idClient}" />
+		Par Nom: <p:inputText value="#{clMB.cl.nomClient}" />
 		</h:panelGrid>
-		<p:commandButton value="Rechercher" action="#{clMB.getClientById}" update="@all"/>
+		<p:commandButton value="Rechercher" action="#{clMB.getClientByIdNom}" update="@all"/>
 	</h:form>
 
 
 
-	<p:dataTable var="cl" value="#{clMB.cl}">
+	<p:dataTable var="cl" value="#{clMB.listeGetClient}">
 
 		<p:column headerText="Id">
 			<h:outputText value="#{cl.idClient}" />
