@@ -9,7 +9,6 @@ import javax.persistence.Query;
 
 import org.apache.commons.codec.binary.Base64;
 
-import fr.adaming.model.Categorie;
 import fr.adaming.model.Produit;
 
 /*
@@ -32,18 +31,17 @@ public class ProduitDaoImpl implements IProduitDao {
 	 */
 	@SuppressWarnings("unchecked")
 	@Override
-	public List<Produit> getAllProduits(Categorie c) {
+	public List<Produit> getAllProduits() {
 
 		/*
 		 * Créer la requete de recuperation de la methode
 		 */
-		String req = "SELECT pr FROM Produit as pr WHERE pr.categorie.idCategorie =:pIdC";
+		String req = "SELECT pr FROM Produit as pr";
 		
 		/*
 		 * Créer la query pour envoyer la requete
 		 */
 		Query query = em.createQuery(req);
-		query.setParameter("pIdC", c.getIdCategorie());
 
 		List<Produit> listeQuery = query.getResultList();
 		

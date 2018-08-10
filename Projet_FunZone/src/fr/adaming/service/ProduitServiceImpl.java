@@ -31,9 +31,9 @@ public class ProduitServiceImpl implements IProduitService {
 	 * @see fr.adaming.service.ICategorieService#getAllCategories()
 	 */
 	@Override
-	public List<Produit> getAllProduits(Categorie c) {
+	public List<Produit> getAllProduits() {
 
-		return pDao.getAllProduits(c);
+		return pDao.getAllProduits();
 	}
 
 	/*

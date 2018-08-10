@@ -18,7 +18,7 @@ public interface IProduitService {
 	 * methode permettant de recuperer la liste des produits
 	 * disponibles sur le site
 	 */
-	public List<Produit> getAllProduits(Categorie c);
+	public List<Produit> getAllProduits();
 
 	/*
 	 * methode permettant d'ajouter un produit
