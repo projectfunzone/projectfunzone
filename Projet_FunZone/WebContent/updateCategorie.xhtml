@@ -22,6 +22,8 @@
 			Nom de la catégorie : <h:inputText
 				value="#{catMB.categorie.nomCategorie}" />
 			Description : <h:inputText value="#{catMB.categorie.description}" />
+			Photo : <p:fileUpload value="#{catMB.file}" mode="simple"
+				skinSimple="true" />
 
 			<h:commandButton value="modifier" action="#{catMB.updateCategorie}" />
 		</h:panelGrid>

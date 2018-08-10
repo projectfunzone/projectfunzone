@@ -49,7 +49,7 @@ public class CategorieDaoImpl implements ICategorieDao {
 		 * pour la lire la photo en la transformant le byte en String
 		 */
 		for (Categorie cat : listeQuery) {
-			cat.setImage("data:image/png);base64,"+Base64.encodeBase64String(cat.getPhoto()));
+			cat.setImage("data:image/png;base64,"+Base64.encodeBase64String(cat.getPhoto()));
 		}
 		
 		return listeQuery;

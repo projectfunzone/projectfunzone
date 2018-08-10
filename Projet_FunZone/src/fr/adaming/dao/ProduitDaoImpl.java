@@ -49,7 +49,7 @@ public class ProduitDaoImpl implements IProduitDao {
 		 * pour la lire la photo en la transformant le byte en String
 		 */
 		for (Produit pr : listeQuery) {
-			pr.setImage("data:image/png);base64,"+Base64.encodeBase64String(pr.getPhoto()));
+			pr.setImage("data:image/png;base64,"+Base64.encodeBase64String(pr.getPhoto()));
 		}
 		
 		return listeQuery;

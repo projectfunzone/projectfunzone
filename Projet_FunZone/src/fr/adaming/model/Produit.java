@@ -45,6 +45,7 @@ public class Produit implements Serializable{
 	
 	@Transient
 	private String image;
+	
 	/**
 	 * Transformation de l'association UML en JAVA entre Produit et Categorie avec propagation
 	 * des opérations sur les Entity d'association
@@ -226,13 +227,14 @@ public class Produit implements Serializable{
 		return image;
 	}
 
+
 	/**
-	 * @param image
+	 * @param image the image to set
 	 */
 	public void setImage(String image) {
 		this.image = image;
 	}
-	
+
 
 	//methode
 	@Override
