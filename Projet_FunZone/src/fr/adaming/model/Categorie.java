@@ -177,7 +177,6 @@ public class Categorie implements Serializable {
 	public void setImage(String image) {
 		this.image = image;
 	}
-	
 
 	// Methode
 	@Override
