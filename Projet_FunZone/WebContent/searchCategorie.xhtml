@@ -29,7 +29,7 @@
 			update="@all" />
 	</h:form>
 
-	<p:dataTable var="cat" value="#{sessionScope.categoriesListe}">
+	<p:dataTable var="cat" value="#{catMB.listeCategorie}">
 
 		<p:column headerText="Id">
 			<h:outputText value="#{cat.idCategorie}" />

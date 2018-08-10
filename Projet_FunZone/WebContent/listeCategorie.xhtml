@@ -17,7 +17,7 @@
 
 	<h1>Liste des catégories</h1>
 	<h:form>
-		<p:dataTable var="c" value="#{sessionScope.categoriesListe}">
+		<p:dataTable var="c" value="#{catMB.listeCategorie}">
 			<p:column headerText="Id">
 				<h:outputText value="#{catMB.categorie.idCategorie}" />
 			</p:column>
