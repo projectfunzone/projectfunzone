@@ -1,6 +1,11 @@
-Idee de Camille :
-choix des produits dans une liste deroulante pour le client
+Idee marketing :
+slogans "des armes pour les supers heros"
 mannequin/mascote lapin rose
 armure ironman
 
-"des armes pour les supers heros"
+
+
+idee metier:
+- recherche commande par id client
+- recherche commande par date
+- choix des produits dans une liste deroulante pour le client

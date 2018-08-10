@@ -6,8 +6,8 @@
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:p="http://primefaces.org/ui">
 <h:head>
-<meta charset="UTF-8"/>
-<title>Afficher la liste des Produits</title>
+	<meta charset="UTF-8" />
+	<title>Afficher la liste des Produits</title>
 
 </h:head>
 <body>
@@ -29,7 +29,7 @@
 			<p:column headerText="Description">
 				<h:outputText value="#{pr.description}" />
 			</p:column>
-			
+
 			<p:column headerText="Prix">
 				<h:outputText value="#{pr.prix}" />
 			</p:column>
@@ -39,11 +39,62 @@
 			</p:column>
 
 			<p:column headerText="Image">
-				<h:graphicImage value="#{pr.image}" style="width:100px; height:100px"/>
+				<h:graphicImage value="#{pr.image}"
+					style="width:100px; height:100px" />
 			</p:column>
 
 		</p:dataTable>
 	</h:form>
+	<br />
+	<br />
+	<br />
+	<h:form>
+		<p:dataTable var="pr" value="#{pMB.listeProduit}"
+			widgetVar="produitsTable"
+			emptyMessage="Pas de produits trouvés pour ces critères"
+			filteredValue="#{pMB.listeProduitFiltre}">
+
+			<f:facet name="header">
+				<p:outputPanel>
+					<h:outputText value="Rechercher sur les champs :" />
+					<p:inputText id="globalFilter"
+						onkeyup="PF('produitsTable').filter()" style="width:150px"
+						placeholder="mot clef" />
+				</p:outputPanel>
+			</f:facet>
+
+			<p:column filterBy="#{pr.idProduit}" headerText="ID" footerText="ID"
+				filterMatchMode="contains">
+				<h:outputText value="#{pr.idProduit}" />
+			</p:column>
+
+			<p:column filterBy="#{pr.designation}" headerText="Nom"
+				footerText="Nom" filterMatchMode="contains">
+				<h:outputText value="#{pr.designation}" />
+			</p:column>
+
+			<p:column filterBy="#{pr.description}" headerText="Description"
+				footerText="Description" filterMatchMode="contains">
+				<h:outputText value="#{pr.description}" />
+			</p:column>
+
+			<p:column filterBy="#{pr.prix}" headerText="Prix" footerText="Prix"
+				filterFunction="#{pMB.filterByPrice}">
+				<h:outputText value="#{pr.prix}">
+					<f:convertNumber currencySymbol="€" type="currency" />
+				</h:outputText>
+			</p:column>
+
+			<p:column filterBy="#{pr.quantite}" headerText="Quantite disponible"
+				footerText="Quantite disponible"
+				filterFunction="#{pMB.filterByPrice}">
+				<h:outputText value="#{pr.quantite}">
+					<f:convertNumber currencySymbol="" type="currency" />
+				</h:outputText>
+			</p:column>
+		</p:dataTable>
+	</h:form>
+
 
 </body>
 </html>

@@ -1,6 +1,7 @@
 package fr.adaming.managedBeans;
 
 import java.util.List;
+import java.util.Locale;
 
 import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
@@ -33,9 +34,11 @@ public class ProduitManagedBean {
 	private Produit produit;
 	private Categorie categorie;
 	private boolean indice;
-	private List<Produit> listeProduit;
-	private UploadedFile file;
 	
+	private List<Produit> listeProduit;
+	private List<Produit> listeProduitFiltre;
+
+	private UploadedFile file;
 	/*
 	 * Transformation de l'association UML en java
 	 */
@@ -97,12 +100,6 @@ public class ProduitManagedBean {
 		return listeProduit;
 	}
 
-	/**
-	 * @param listeCategorie the listeCategorie to set
-	 */
-	public void setListeCategorie(List<Produit> listeProduit) {
-		this.listeProduit = listeProduit;
-	}
 	
 	/**
 	 * @return the file
@@ -112,11 +109,60 @@ public class ProduitManagedBean {
 	}
 
 	/**
-	 * @param the file
+	 * @param file the file to set
 	 */
 	public void setFile(UploadedFile file) {
 		this.file = file;
 	}
+
+	/**
+	 * @param listeCategorie the listeCategorie to set
+	 */
+	public void setListeCategorie(List<Produit> listeProduit) {
+		this.listeProduit = listeProduit;
+	}
+	
+     
+    public List<String> getDesignation() {
+        return getDesignation();
+    }
+     
+    public List<String> getDescription() {
+        return getDescription();
+    }
+ 
+    public List<Produit> getListeProduitFiltre() {
+        return listeProduitFiltre;
+    }
+ 
+    public void setListeProduitFiltre(List<Produit> listeProduitFiltre) {
+        this.listeProduitFiltre = listeProduitFiltre;
+    }
+	
+	
+	
+	
+	
+	
+	
+    @SuppressWarnings({ "unchecked", "rawtypes" })
+	public boolean filterByPrice(Object value, Object filter, Locale locale) {
+        String filterText = (filter == null) ? null : filter.toString().trim();
+        if(filterText == null||filterText.equals("")) {
+            return true;
+        }
+         
+        if(value == null) {
+            return false;
+        }
+         
+        return ((Comparable) value).compareTo(Integer.valueOf(filterText)) > 0;
+    }
+	
+	
+	
+	
+	
 
 	/*
 	 * ajouter une nouvelle categorie au site
