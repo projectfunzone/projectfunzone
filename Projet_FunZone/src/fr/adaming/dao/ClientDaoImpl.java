@@ -43,7 +43,7 @@ public class ClientDaoImpl implements IClientDao {
 	public List<Client> getClientByIdNom(Client cl) {
 
 		// requete JPQL
-		String req = "SELECT cl FROM Client cl WHERE cl.idClient=:pId OR cl.nomClient=:pNom";
+		String req = "SELECT cl FROM Client cl WHERE cl.idClient=:pId OR cl.nomClient=:pNom OR cl.email=:pEmail";
 
 		// Récupérer le query
 		Query query = em.createQuery(req);
@@ -51,6 +51,7 @@ public class ClientDaoImpl implements IClientDao {
 		// ajout des paramètres
 		query.setParameter("pId", cl.getIdClient());
 		query.setParameter("pNom", cl.getNomClient());
+		query.setParameter("pEmail", cl.getEmail());
 
 		// retourner la liste de résultat
 		return query.getResultList();

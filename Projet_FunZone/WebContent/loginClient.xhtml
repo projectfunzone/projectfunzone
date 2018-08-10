@@ -13,24 +13,25 @@
 		<ui:include src="/templates/header.xhtml" />
 	</ui:insert>
 
-	<h1>Connexion Administrateur FunZone</h1>
+	<h1>Connexion Client</h1>
 
 	<h:form>
 		<h:panelGrid columns="2">
-		Identifiant*: <p:inputText value="#{adMB.admin.idAdmin}" label="Id"
+		Adresse Mail*: <p:inputText value="#{clMB.cl.email}" label="email"
 				required="true" />
-		Mot de passe*: <p:inputText value="#{adMB.admin.mdpAdmin}"
+		Mot de passe*: <p:inputText value="#{clMB.cl.mdpClient}"
 				label="Mot de passe" required="true" />
 
 		</h:panelGrid>
 
-		<p:commandButton value="Se connecter" action="#{adMB.seConnecter}"
+		<p:commandButton value="Se connecter" action="#{clMB.seConnecter}"
 			update="@all" />
 	</h:form>
 
 	<h1 style="color: red; text-align: center">
 		<h:messages />
 	</h1>
+
 
 </h:body>
 </html>

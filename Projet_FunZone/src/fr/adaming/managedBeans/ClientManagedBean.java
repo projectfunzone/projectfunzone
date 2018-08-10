@@ -36,8 +36,6 @@ public class ClientManagedBean implements Serializable {
 
 	private List<Client> listeGetClient;
 
-	
-
 	/**
 	 * permet de récupérer la liste des clients au moment de l'instanciation du
 	 * managedBean
@@ -100,8 +98,6 @@ public class ClientManagedBean implements Serializable {
 		this.listeAllClient = listeAllClient;
 	}
 
-
-
 	// autre méthode
 	/**
 	 * Permet de récupérer un client par son id. retourne la même page xhtml,
@@ -147,7 +143,9 @@ public class ClientManagedBean implements Serializable {
 	}
 
 	/**
-	 * Permet de créer un client. Met la liste des clients à jour dans la page "listeAllClient.xhtml"
+	 * Permet de créer un client. Met la liste des clients à jour dans la page
+	 * "listeAllClient.xhtml"
+	 * 
 	 * @return
 	 */
 	public String addClient() {
@@ -164,17 +162,19 @@ public class ClientManagedBean implements Serializable {
 
 		return "";
 	}
-	
+
 	/**
-	 * Permet de supprimer un client. Met la liste des clients à jour dans la page "listeAllClient.xhtml"
-	 * si le retour de la méthode est =! 0, la suppression a fonctionné
-	 * sinon, si ==0 c'est que la suppression n'a pas fonctionner
+	 * Permet de supprimer un client. Met la liste des clients à jour dans la
+	 * page "listeAllClient.xhtml" si le retour de la méthode est =! 0, la
+	 * suppression a fonctionné sinon, si ==0 c'est que la suppression n'a pas
+	 * fonctionner
+	 * 
 	 * @return
 	 */
 	public String deleteClient() {
 		int verif = clService.deleteClient(this.cl);
-		
-		if (verif !=0 ){
+
+		if (verif != 0) {
 			this.listeAllClient = clService.getAllClient();
 
 			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Le compte a bien été supprimé"));
@@ -183,45 +183,81 @@ public class ClientManagedBean implements Serializable {
 		}
 
 		return "";
-		
+
 	}
-	
+
 	/**
-	 * Permet de modifier un client. Met la liste des clients à jour dans la page "listeAllClient.xhtml"
-	 * si le retour de la méthode est =! 0, la modif a fonctionné
-	 * sinon, si ==0 c'est que la modif n'a pas fonctionner
+	 * Permet de modifier un client. Met la liste des clients à jour dans la
+	 * page "listeAllClient.xhtml" si le retour de la méthode est =! 0, la modif
+	 * a fonctionné sinon, si ==0 c'est que la modif n'a pas fonctionner
+	 * 
 	 * @return
 	 */
 	public String updateClient() {
 		int verif = clService.updateClient(this.cl);
-		
+
 		if (verif != 0) {
 			this.listeAllClient = clService.getAllClient();
 
 			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("La modif a été prise en compte"));
-		}else {
+		} else {
 			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Une erreur s'est produit"));
 		}
 
 		return "";
 	}
-	
+
 	/**
-	 * Permet de modifier le mdp d'un client.
-	 * si le retour de la méthode est =! 0, la modif a fonctionné
-	 * sinon, si ==0 c'est que la modif n'a pas fonctionner
+	 * Permet de modifier le mdp d'un client. si le retour de la méthode est =!
+	 * 0, la modif a fonctionné sinon, si ==0 c'est que la modif n'a pas
+	 * fonctionner
+	 * 
 	 * @return
 	 */
 	public String updateClientMdp() {
 		int verif = clService.updateClientMdp(this.cl);
-		
+
 		if (verif != 0) {
-			
+
 			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Le mot de passe a été modifié"));
-		}else {
+		} else {
 			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Une erreur s'est produit"));
 		}
 
 		return "";
+	}
+
+	
+	public String seConnecter() {
+		
+		//Vérifie si le client est déjà connecté => on vérifie s'il y a déjà un client dans la session
+		if (FacesContext.getCurrentInstance().getExternalContext().getSessionMap().get("clSession") != null) {
+			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Vous êtes déjà connecté"));
+			return "";
+		} else {
+			//si le client n'est pas connecter, on appelle la méthode pour vérifier le mail et le mdp
+			int verif=clService.connectionClient(this.cl);
+			
+			switch (verif) {
+			//si le retour de la méthode = 0, le mail n'existe pas => pas de compte client dans la DB
+			case 0:
+				FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Il n'y a pas de compte client associé à cette adresse email"));
+				return "";
+			//si le retour de la méthode = 1, la connexion a réussi et on ajoute le client dans la session
+			case 1:
+				this.cl=(Client) clService.getClientByIdNom(cl).get(0);
+				FacesContext.getCurrentInstance().getExternalContext().getSessionMap().put("clSession", this.cl);
+				
+				return "accueil";
+			case 2:
+				FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Le mot de passe est erroné"));
+				return "";
+			default:
+				return "";
+		
+			}
+		}
+			
+		
 	}
 }

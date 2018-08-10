@@ -30,7 +30,7 @@ public class Commande implements Serializable {
 	@Column(name="id_commande")
 	private Long idCommande;
 	
-	@Temporal(TemporalType.TIME)
+	@Temporal(TemporalType.TIMESTAMP)
 	private Date dateCommande;
 
 	

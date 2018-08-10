@@ -62,4 +62,6 @@ public interface IClientService {
 	 * @return
 	 */
 	public int updateClientMdp(Client cl);
+	
+	public int connectionClient(Client cl);
 }
