@@ -20,6 +20,7 @@ import javax.persistence.TemporalType;
  * permet de définir une commande, Class persistante dans la base de donnée. Auteur :
  * Camille
  */
+@SuppressWarnings("serial")
 @Entity
 @Table(name="commandes")
 public class Commande implements Serializable {

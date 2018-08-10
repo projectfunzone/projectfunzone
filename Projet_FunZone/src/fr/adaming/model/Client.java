@@ -17,6 +17,7 @@ import javax.persistence.Table;
  * Auteur : Camille
  */
 
+@SuppressWarnings("serial")
 @Entity
 @Table(name = "clients")
 public class Client implements Serializable {

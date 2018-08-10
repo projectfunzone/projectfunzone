@@ -19,6 +19,7 @@ import fr.adaming.service.IClientService;
  * @author Camille
  *
  */
+@SuppressWarnings("serial")
 @ManagedBean(name = "clMB")
 @RequestScoped
 public class ClientManagedBean implements Serializable {

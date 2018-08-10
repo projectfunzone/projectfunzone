@@ -14,7 +14,6 @@ import org.primefaces.model.UploadedFile;
 
 import fr.adaming.model.Categorie;
 import fr.adaming.model.Produit;
-import fr.adaming.service.ICategorieService;
 import fr.adaming.service.IProduitService;
 
 /*

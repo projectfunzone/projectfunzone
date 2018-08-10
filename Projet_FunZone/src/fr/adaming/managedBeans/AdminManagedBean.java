@@ -19,6 +19,7 @@ import fr.adaming.service.IAdminService;
  *
  */
 
+@SuppressWarnings("serial")
 @ManagedBean(name = "adMB")
 @RequestScoped
 public class AdminManagedBean implements Serializable {

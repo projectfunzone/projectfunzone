@@ -14,6 +14,7 @@ import javax.persistence.Table;
  * Camille
  */
 
+@SuppressWarnings("serial")
 @Entity
 @Table(name = "admins")
 public class Admin implements Serializable {
