@@ -6,6 +6,7 @@ import java.util.List;
 import javax.annotation.PostConstruct;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
+import javax.faces.bean.RequestScoped;
 import javax.faces.context.FacesContext;
 
 import fr.adaming.model.LigneCommande;
@@ -13,9 +14,9 @@ import fr.adaming.model.Panier;
 import fr.adaming.model.Produit;
 import fr.adaming.service.IClientService;
 import fr.adaming.service.IProduitService;
-import sun.print.PSStreamPrintService;
 
 @ManagedBean(name = "panMB")
+@RequestScoped
 public class PanierManagedBean {
 
 	/*
@@ -111,7 +112,7 @@ public class PanierManagedBean {
 	 * Methode permettant d'ajouter un produit dans son panier en passant par une ligne de commande
 	 * Ce panier n'est pas stocké dans la base de donnée (transient) mais uniquement dans la session créée pour l'occasion 
 	 */
-	public String ajouterProdPanier() {
+	public String addProdPanier() {
 
 		// on créé une session pour le panier
 		Panier panSession = (Panier) FacesContext.getCurrentInstance().getExternalContext().getSessionMap()

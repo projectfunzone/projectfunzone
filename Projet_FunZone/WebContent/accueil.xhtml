@@ -15,7 +15,7 @@
 
 <!-- Galerie promotionnelle affichant les produits disponibles sur le site -->
 <p:contentFlow value="#{imgMB.images}" var="image">
-    <p:graphicImage name="resources/images/#{image}" styleClass="content" />
+    <p:graphicImage value="resources/images/#{image}" styleClass="content" />
     <div class="caption">#{image}</div>
 </p:contentFlow>
 
