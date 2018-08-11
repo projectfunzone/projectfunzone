@@ -5,6 +5,8 @@ import java.util.List;
 import javax.ejb.Local;
 
 import fr.adaming.model.Client;
+import fr.adaming.model.LigneCommande;
+import fr.adaming.model.Produit;
 
 /**
  * Interface de la couche Service qui permet d'utiliser le CRUD et définit les
@@ -64,4 +66,10 @@ public interface IClientService {
 	public int updateClientMdp(Client cl);
 	
 	public int connectionClient(Client cl);
+	
+	/**
+	 * Sert à créer une ligne de commade lors du choix d'un produit
+	 * @return
+	 */
+	public LigneCommande ajoutProdPanier(Produit pr, int q);
 }

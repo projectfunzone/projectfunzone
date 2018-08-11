@@ -75,10 +75,10 @@ public class ProduitServiceImpl implements IProduitService {
 	 * Categorie)
 	 */
 	@Override
-	public int deleteProduit(Produit pr, Categorie c) {
+	public int deleteProduit(Produit pr) {
 
 		// chercher l'étudiant avec son id
-		Produit pDel = this.getProduitbyId(pr, c);
+		Produit pDel = this.getProduitbyId(pr);
 
 		// verifier si l'étudiant existe et appartient au formateur
 		if (pDel != null) {
@@ -100,20 +100,15 @@ public class ProduitServiceImpl implements IProduitService {
 	 * Categorie)
 	 */
 	@Override
-	public Produit getProduitbyId(Produit pr, Categorie c) {
-		// lier les objets java
-		pr.setCategorie(c);
+	public Produit getProduitbyId(Produit pr) {
 
 		// recuperer l'étudiant
 		Produit pOut = pDao.getProduitbyId(pr);
 
 		if (pOut != null) {
 
-			if (pOut.getCategorie().getIdCategorie() == c.getIdCategorie()) { 
+			return pOut;
 
-				return pOut;
-
-			}
 		}
 
 		return null;

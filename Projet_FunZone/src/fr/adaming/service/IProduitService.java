@@ -33,11 +33,11 @@ public interface IProduitService {
 	/*
 	 * methode permettant de supprimer un produit
 	 */
-	public int deleteProduit(Produit pr, Categorie c);
+	public int deleteProduit(Produit pr);
 
 	/*
 	 * methode permettant de rechercher un produit par son id
 	 */
-	public Produit getProduitbyId(Produit pr, Categorie c);
+	public Produit getProduitbyId(Produit pr);
 
 }

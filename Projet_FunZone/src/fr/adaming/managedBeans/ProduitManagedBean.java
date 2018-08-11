@@ -219,7 +219,7 @@ public class ProduitManagedBean {
 
 	public String deleteProduit() {
 		
-		int verif = pService.deleteProduit(this.produit, this.categorie);
+		int verif = pService.deleteProduit(this.produit);
 
 		if (verif != 0) {
 
@@ -244,7 +244,7 @@ public class ProduitManagedBean {
 		/*
 		 * recherche et stockage de la categorie recherchée
 		 */
-		Produit pSearch = pService.getProduitbyId(this.produit, this.categorie);
+		Produit pSearch = pService.getProduitbyId(this.produit);
 
 		/*
 		 * On test le bon résultat de la recherche

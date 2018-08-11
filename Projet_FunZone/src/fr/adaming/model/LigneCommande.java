@@ -19,7 +19,7 @@ public class LigneCommande {
 	@Column(name = "id_ligneCommande")
 	private Long idLigneCommande;
 	private int quantite;
-	private int prix;
+	private double prix;
 
 	/*
 	 * Transformation de l'association UML en JAVA entre Ligne de Commande et
@@ -110,16 +110,16 @@ public class LigneCommande {
 	/**
 	 * @return the prix
 	 */
-	public int getPrix() {
+	public double getPrix() {
 		return prix;
 	}
 
 	/**
-	 * @param prix
+	 * @param d
 	 *            the prix to set
 	 */
-	public void setPrix(int prix) {
-		this.prix = prix;
+	public void setPrix(double d) {
+		this.prix = d;
 	}
 
 	/**

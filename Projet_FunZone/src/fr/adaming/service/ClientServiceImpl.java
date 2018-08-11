@@ -7,6 +7,8 @@ import javax.ejb.Stateful;
 
 import fr.adaming.dao.IClientDao;
 import fr.adaming.model.Client;
+import fr.adaming.model.LigneCommande;
+import fr.adaming.model.Produit;
 
 /**
  * Class qui implemente l'interface IClientService pour récupérer les méthodes
@@ -106,6 +108,31 @@ public class ClientServiceImpl implements IClientService {
 
 		}
 		return 0;
+	}
+
+	/*
+	 * @see fr.adaming.service.IClientService#ajoutProdPanier(fr.adaming.model.
+	 * Produit, int) 
+	 * Le produit choisi par le client ainsi que sa quantité sont en parametre. 
+	 * On crée une ligne de commande et on vérifié que la quantité demandée est disponible 
+	 * Si c’est le cas alors on ajoute à la ligne de commande.
+	 * On stocke le produit, la quantité et le prix dans la ligne de commande
+	 * En sortie on récupère lc.
+	 */
+	@Override
+	public LigneCommande ajoutProdPanier(Produit pr, int q) {
+
+		LigneCommande lc = new LigneCommande();
+
+		if (q <= pr.getQuantite()) {
+			lc.setProduit(pr);
+			lc.setQuantite(q);
+			lc.setPrix(pr.getPrix() * q);
+			return lc;
+		} else {
+			return null;
+		}
+
 	}
 
 }
