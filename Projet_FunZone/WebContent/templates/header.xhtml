@@ -20,7 +20,8 @@
 				<p:menuitem value="Ajouter un client" url="addClient.xhtml" />
 				<p:menuitem value="Supprimer un client" url="deleteClient.xhtml" />
 				<p:menuitem value="Modifier un client" url="updateClient.xhtml" />
-				<p:menuitem value="Modifier le mdpClient" url="updateClientMdp.xhtml" />
+				<p:menuitem value="Modifier le mdpClient"
+					url="updateClientMdp.xhtml" />
 				<p:menuitem value="Rechercher un client" url="getClient.xhtml" />
 			</p:submenu>
 
@@ -54,19 +55,53 @@
 				<p:menuitem value="Accueil Admin" url="accueilAdmin.xhtml" />
 				<p:menuitem value="Déconnexion" url="logoutAdmin.xhtml" />
 			</p:submenu>
-			
+
 			<p:submenu label="Connexion Client">
 				<p:menuitem value="Connexion" url="loginClient.xhtml" />
 				<p:menuitem value="Déconnexion" url="logoutClient.xhtml" />
 			</p:submenu>
+		</p:menubar>
+	</h:form>
+	<!-- menu barre supérieure -->
+	<h:form>
+		<p:growl id="messages" />
 
+		<p:menubar>
+			<p:menuitem value="Vente Flash" url="#"
+				icon="ui-icon-tag" />
+			<p:menuitem value="Le kit de départ" url="#"
+				icon="ui-icon-eject" />
 
+			<p:submenu label="Tout apprendre sur..." icon="ui-icon-plus">
+				<p:menuitem value="le paintball" url="#"
+					icon="ui-icon-circle-triangle-e" />
+				<p:menuitem value="le laser game" url="#"
+					icon="ui-icon-circle-triangle-e" />
+			</p:submenu>
 
+			<p:menuitem value="Avantage adhérent" url="#"
+				icon="ui-icon-gear" />
 
+			<p:menuitem value="Mon panier" url="#"
+				icon="ui-icon-cart" />
 
-
+			<f:facet name="options">
+				<p:inputText style="margin-right:10px" placeholder="Search" />
+				<p:commandButton type="button" value="Logout" icon="ui-icon-extlink" />
+			</f:facet>
 		</p:menubar>
 	</h:form>
 
+	<h:form>
+		<p:growl id="messages" showDetail="false" />
+
+		<p:menu>
+			<p:menuitem value="Accueil" url="accueil.xhtml" icon="ui-icon-home" />
+			<p:menuitem value="Tous nos produits" url="listeProduit.xhtml"
+				icon="ui-icon-arrowreturnthick-1-e" />
+			<p:menuitem value="Toutes les categories" url="listeCategorie.xhtml"
+				icon="ui-icon-arrowreturnthick-1-e" />
+		</p:menu>
+	</h:form>
 </h:body>
 </html>
