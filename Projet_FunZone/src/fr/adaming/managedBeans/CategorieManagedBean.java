@@ -18,30 +18,26 @@ import fr.adaming.service.ICategorieService;
 
 /*
  * @author Thibault
- * Manager des Categories
+ * ManagedBean des Categories
  */
 @SuppressWarnings("serial")
 @ManagedBean(name = "catMB")
 @RequestScoped
 public class CategorieManagedBean implements Serializable {
 
-	/*
-	 * Declaration des attributs du ManagedBean Categorie
-	 */
+	//Declaration des attributs
 	HttpSession maSession;
 	private Categorie categorie;
 	private boolean indice;
 	private List<Categorie> listeCategorie;
 	private UploadedFile file;
 	
-	/*
-	 * Transformation de l'association UML en java
-	 */
+	//transformation de l'association UML en JAVA
 	@EJB
 	private ICategorieService cService;
 
 	/*
-	 * Constructeur vide du ManagedBean
+	 * Constructeur vide
 	 */
 	public CategorieManagedBean() {
 		super();

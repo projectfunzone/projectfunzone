@@ -11,9 +11,9 @@ import org.apache.commons.codec.binary.Base64;
 
 import fr.adaming.model.Produit;
 
-/*
+/* 
+ * Implementation de l'interface ProduitDao pour redéfinir les méthodes de Produit
  * @author Thibault
- * Definition des methodes de Produit
  */
 @Stateless
 public class ProduitDaoImpl implements IProduitDao {
@@ -33,21 +33,13 @@ public class ProduitDaoImpl implements IProduitDao {
 	@Override
 	public List<Produit> getAllProduits() {
 
-		/*
-		 * Créer la requete de recuperation de la methode
-		 */
 		String req = "SELECT pr FROM Produit as pr";
 		
-		/*
-		 * Créer la query pour envoyer la requete
-		 */
 		Query query = em.createQuery(req);
 
 		List<Produit> listeQuery = query.getResultList();
 		
-		/*
-		 * pour la lire la photo en la transformant le byte en String
-		 */
+		//pour la lire la photo en la transformant le byte en String
 		for (Produit pr : listeQuery) {
 			pr.setImage("data:image/png;base64,"+Base64.encodeBase64String(pr.getPhoto()));
 		}

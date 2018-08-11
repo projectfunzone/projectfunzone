@@ -13,6 +13,7 @@ import fr.adaming.model.Categorie;
 import fr.adaming.model.Produit;
 
 /**
+ *Implementation de l'interface ProduitService pour redéfinir les méthodes de Produit
  * @author Adaming
  *
  */

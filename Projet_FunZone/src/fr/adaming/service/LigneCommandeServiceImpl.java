@@ -3,10 +3,16 @@ package fr.adaming.service;
 import java.util.List;
 
 import javax.ejb.EJB;
+import javax.ejb.Stateful;
 
 import fr.adaming.dao.ILigneCommandeDao;
 import fr.adaming.model.LigneCommande;
 
+/*
+ *  Implementation de l'interface LigneCommandeService pour redéfinir les méthodes de LigneCommande
+ *  @author Thibault
+ */
+@Stateful
 public class LigneCommandeServiceImpl implements ILigneCommandeService {
 
 	/*

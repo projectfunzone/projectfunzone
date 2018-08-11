@@ -12,7 +12,8 @@ import fr.adaming.dao.ICategorieDao;
 import fr.adaming.model.Categorie;
 
 /**
- * @author Thibault Definition des methodes services pour la classe Categorie
+ * Implementation de l'interface CategorieService pour redéfinir les méthodes de Categorie
+ * @author Thibault
  *
  */
 @Stateful

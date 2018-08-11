@@ -6,31 +6,35 @@ import javax.ejb.Local;
 
 import fr.adaming.model.LigneCommande;
 
+/*
+ *  Interface Dao définisant les méthodes de Categorie
+ *  @author Thibault
+ */
 @Local
 public interface ILigneCommandeDao {
 	
 	/*
-	 * methode permettant de recuperer la liste des categories de produits disponibles sur le site
+	 * methode permettant de recuperer la liste des commandes effectuées
 	 */
 	public List<LigneCommande> getAllLigneCommandes();
 	
 	/*
-	 * methode permettant d'ajouter une categorie de produit
+	 * methode permettant d'ajouter une ligne de commande
 	 */
 	public LigneCommande addLigneCommande(LigneCommande lc);
 	
 	/*
-	 * methode permettant de modifier une categorie de produit
+	 * methode permettant de modifier une ligne de commande
 	 */
 	public int updateLigneCommande(LigneCommande lc);
 	
 	/*
-	 * methode permettant de supprimer une categorie de produit
+	 * methode permettant de supprimer une ligne de commande
 	 */
 	public int deleteLigneCommande(LigneCommande lc);
 	
 	/*
-	 * methode permettant de rechercher une categorie de produit par son id
+	 * methode permettant de rechercher une ligne de commande
 	 */
 	public LigneCommande getLigneCommandebyId (LigneCommande lc);
 

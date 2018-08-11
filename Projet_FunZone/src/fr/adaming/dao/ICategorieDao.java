@@ -7,24 +7,24 @@ import javax.ejb.Local;
 import fr.adaming.model.Categorie;
 
 /**
+ * Interface Dao définisant les méthodes de Categorie
  * @author Thibault
- * Methode interface Dao pour les categories de produits
  */
 @Local
 public interface ICategorieDao {
 	
 	/*
-	 * methode permettant de recuperer la liste des categories de produits disponibles sur le site
+	 * Methode permettant de recuperer la liste des categories de produits disponibles sur le site
 	 */
 	public List<Categorie> getAllCategories();
 	
 	/*
-	 * methode permettant d'ajouter une categorie de produit
+	 * Methode permettant d'ajouter une categorie de produit
 	 */
 	public Categorie addCategorie(Categorie c);
 	
 	/*
-	 * methode permettant de modifier une categorie de produit
+	 * Methode permettant de modifier une categorie de produit
 	 */
 	public int updateCategorie(Categorie c);
 	

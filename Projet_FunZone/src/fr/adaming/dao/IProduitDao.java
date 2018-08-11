@@ -7,8 +7,8 @@ import javax.ejb.Local;
 import fr.adaming.model.Produit;
 
 /**
+ * Interface Dao définissant les méthodes de Produit
  * @author Thibault
- * Methode interface Dao pour les produits
  *
  */
 @Local

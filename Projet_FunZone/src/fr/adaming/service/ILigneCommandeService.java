@@ -6,6 +6,10 @@ import javax.ejb.Local;
 
 import fr.adaming.model.LigneCommande;
 
+/*
+ * Iinterface definissant les methodes de LigneCommandeService
+ * @author Thibault
+ */
 @Local
 public interface ILigneCommandeService {
 	

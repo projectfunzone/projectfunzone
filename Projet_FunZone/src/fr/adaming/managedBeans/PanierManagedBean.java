@@ -106,6 +106,11 @@ public class PanierManagedBean {
 		this.lc = lc;
 	}
 
+	
+	/*
+	 * Methode permettant d'ajouter un produit dans son panier en passant par une ligne de commande
+	 * Ce panier n'est pas stocké dans la base de donnée (transient) mais uniquement dans la session créée pour l'occasion 
+	 */
 	public String ajouterProdPanier() {
 
 		// on créé une session pour le panier

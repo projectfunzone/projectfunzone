@@ -9,6 +9,7 @@ import fr.adaming.model.Categorie;
 import fr.adaming.model.Produit;
 
 /**
+ * Interface défininissant les méthodes de Produit
  * @author Thibault
  *
  */

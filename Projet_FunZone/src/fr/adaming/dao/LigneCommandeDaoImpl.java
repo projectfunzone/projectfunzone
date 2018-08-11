@@ -1,5 +1,9 @@
 package fr.adaming.dao;
 
+/*
+ * Implementation de l'interface LigneCommandeDao pour redéfinir les méthodes de LigneCommande
+ * @author Thibault
+ */
 import java.util.List;
 
 import javax.ejb.Stateless;
@@ -16,14 +20,15 @@ public class LigneCommandeDaoImpl implements ILigneCommandeDao {
 	@PersistenceContext(unitName = "PFZ")
 	private EntityManager em;
 
+	/*
+	 * (non-Javadoc)
+	 * @see fr.adaming.dao.ILigneCommandeDao#getAllLigneCommandes()
+	 */
 	@Override
 	public List<LigneCommande> getAllLigneCommandes() {
 
 		String req = "SELECT lc FROM LigneCommande as lc";
-
-		/*
-		 * Créer la query pour envoyer la requete
-		 */
+		
 		Query query = em.createQuery(req);
 
 		List<LigneCommande> listeQuery = query.getResultList();
@@ -31,6 +36,10 @@ public class LigneCommandeDaoImpl implements ILigneCommandeDao {
 		return listeQuery;
 	}
 
+	/*
+	 * (non-Javadoc)
+	 * @see fr.adaming.dao.ILigneCommandeDao#addLigneCommande(fr.adaming.model.LigneCommande)
+	 */
 	@Override
 	public LigneCommande addLigneCommande(LigneCommande lc) {
 		em.persist(lc);
@@ -38,6 +47,10 @@ public class LigneCommandeDaoImpl implements ILigneCommandeDao {
 		return lc;
 	}
 
+	/*
+	 * (non-Javadoc)
+	 * @see fr.adaming.dao.ILigneCommandeDao#updateLigneCommande(fr.adaming.model.LigneCommande)
+	 */
 	@Override
 	public int updateLigneCommande(LigneCommande lc) {
 		String req = "UPDATE LigneCommande as lc SET lc.quantite =:pQte, lc.prix=:pPrix WHERE lc.idLigneCommande =:pIdLC";
@@ -51,6 +64,10 @@ public class LigneCommandeDaoImpl implements ILigneCommandeDao {
 		return query.executeUpdate();
 	}
 
+	/*
+	 * (non-Javadoc)
+	 * @see fr.adaming.dao.ILigneCommandeDao#deleteLigneCommande(fr.adaming.model.LigneCommande)
+	 */
 	@Override
 	public int deleteLigneCommande(LigneCommande lc) {
 
@@ -65,6 +82,10 @@ public class LigneCommandeDaoImpl implements ILigneCommandeDao {
 		return query.executeUpdate();
 	}
 
+	/*
+	 * (non-Javadoc)
+	 * @see fr.adaming.dao.ILigneCommandeDao#getLigneCommandebyId(fr.adaming.model.LigneCommande)
+	 */
 	@Override
 	public LigneCommande getLigneCommandebyId(LigneCommande lc) {
 		String req = "SELECT lc FROM LigneCommande as lc WHERE lc.idLigneCommande=:pIdLC";

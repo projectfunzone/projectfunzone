@@ -12,15 +12,13 @@ import org.apache.commons.codec.binary.Base64;
 import fr.adaming.model.Categorie;
 
 /*
+ * Implementation de l'interface CategorieDao pour redéfinir les méthodes de Categorie
  * @author Thibault
- * Definition des methodes de Categories
  */
 @Stateless
 public class CategorieDaoImpl implements ICategorieDao {
 
-	/*
-	 * Instanciation du Entity Manager
-	 */
+	//Instanciation de l'Entity Manager
 	@PersistenceContext(unitName = "PFZ")
 	private EntityManager em;
 
@@ -33,21 +31,15 @@ public class CategorieDaoImpl implements ICategorieDao {
 	@Override
 	public List<Categorie> getAllCategories() {
 
-		/*
-		 * Créer la requete de recuperation de la methode
-		 */
+		//Créer la requete de recuperation de la methode
 		String req = "SELECT cat FROM Categorie as cat";
 
-		/*
-		 * Créer la query pour envoyer la requete
-		 */
+		//Créer la query pour envoyer la requete
 		Query query = em.createQuery(req);
 
 		List<Categorie> listeQuery = query.getResultList();
 		
-		/*
-		 * pour la lire la photo en la transformant le byte en String
-		 */
+		// pour la lire la photo en la transformant le byte en String
 		for (Categorie cat : listeQuery) {
 			cat.setImage("data:image/png;base64,"+Base64.encodeBase64String(cat.getPhoto()));
 		}

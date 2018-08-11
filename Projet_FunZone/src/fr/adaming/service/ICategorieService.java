@@ -10,9 +10,8 @@ import javax.ejb.Local;
 import fr.adaming.model.Categorie;
 
 /**
+ * Interface définissant les méthodes fr Categorie
  * @author Thibault
- * Liste des methodes services pour la classe Categorie
- *
  */
 @Local
 public interface ICategorieService {
