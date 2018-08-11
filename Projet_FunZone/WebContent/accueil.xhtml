@@ -12,6 +12,12 @@
 	<ui:insert>
 		<ui:include src="/templates/header.xhtml"/>
 	</ui:insert>
-Accueil
+
+<!-- Galerie promotionnelle affichant les produits disponibles sur le site -->
+<p:contentFlow value="#{imgMB.images}" var="image">
+    <p:graphicImage name="resources/images/#{image}" styleClass="content" />
+    <div class="caption">#{image}</div>
+</p:contentFlow>
+
 </h:body>
 </html>
