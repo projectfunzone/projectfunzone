@@ -26,7 +26,6 @@ import fr.adaming.service.IProduitService;
 @RequestScoped
 public class ProduitManagedBean {
 
-	
 	/*
 	 * Declaration des attributs du ManagedBean Produit
 	 */
@@ -34,9 +33,10 @@ public class ProduitManagedBean {
 	private Produit produit;
 	private Categorie categorie;
 	private boolean indice;
-	
+
 	private List<Produit> listeProduit;
 	private List<Produit> listeProduitFiltre;
+	private List<Produit> listeProduitDebutant;
 
 	private UploadedFile file;
 	/*
@@ -55,10 +55,10 @@ public class ProduitManagedBean {
 	}
 
 	@PostConstruct
-	public void init(){
+	public void init() {
 		this.listeProduit = pService.getAllProduits();
 	}
-	
+
 	/*
 	 * Declaration des getteurs et setteurs
 	 */
@@ -92,7 +92,7 @@ public class ProduitManagedBean {
 	public void setIndice(boolean indice) {
 		this.indice = indice;
 	}
-	
+
 	/**
 	 * @return the listeCategorie
 	 */
@@ -100,7 +100,6 @@ public class ProduitManagedBean {
 		return listeProduit;
 	}
 
-	
 	/**
 	 * @return the file
 	 */
@@ -109,60 +108,65 @@ public class ProduitManagedBean {
 	}
 
 	/**
-	 * @param file the file to set
+	 * @param file
+	 *            the file to set
 	 */
 	public void setFile(UploadedFile file) {
 		this.file = file;
 	}
 
 	/**
-	 * @param listeCategorie the listeCategorie to set
+	 * @param listeCategorie
+	 *            the listeCategorie to set
 	 */
 	public void setListeCategorie(List<Produit> listeProduit) {
 		this.listeProduit = listeProduit;
 	}
-	
-     
-    public List<String> getDesignation() {
-        return getDesignation();
-    }
-     
-    public List<String> getDescription() {
-        return getDescription();
-    }
- 
-    public List<Produit> getListeProduitFiltre() {
-        return listeProduitFiltre;
-    }
- 
-    public void setListeProduitFiltre(List<Produit> listeProduitFiltre) {
-        this.listeProduitFiltre = listeProduitFiltre;
-    }
-	
-	
-	
-	
-	
-	
-	
-    @SuppressWarnings({ "unchecked", "rawtypes" })
+
+	public List<String> getDesignation() {
+		return getDesignation();
+	}
+
+	public List<String> getDescription() {
+		return getDescription();
+	}
+
+	public List<Produit> getListeProduitFiltre() {
+		return listeProduitFiltre;
+	}
+
+	public void setListeProduitFiltre(List<Produit> listeProduitFiltre) {
+		this.listeProduitFiltre = listeProduitFiltre;
+	}
+
+	/**
+	 * @return the listeProduitDebutant
+	 */
+	public List<Produit> getListeProduitDebutant() {
+		return listeProduitDebutant;
+	}
+
+	/**
+	 * @param listeProduitDebutant
+	 *            the listeProduitDebutant to set
+	 */
+	public void setListeProduitDebutant(List<Produit> listeProduitDebutant) {
+		this.listeProduitDebutant = listeProduitDebutant;
+	}
+
+	@SuppressWarnings({ "unchecked", "rawtypes" })
 	public boolean filterByPrice(Object value, Object filter, Locale locale) {
-        String filterText = (filter == null) ? null : filter.toString().trim();
-        if(filterText == null||filterText.equals("")) {
-            return true;
-        }
-         
-        if(value == null) {
-            return false;
-        }
-         
-        return ((Comparable) value).compareTo(Integer.valueOf(filterText)) > 0;
-    }
-	
-	
-	
-	
-	
+		String filterText = (filter == null) ? null : filter.toString().trim();
+		if (filterText == null || filterText.equals("")) {
+			return true;
+		}
+
+		if (value == null) {
+			return false;
+		}
+
+		return ((Comparable) value).compareTo(Integer.valueOf(filterText)) > 0;
+	}
 
 	/*
 	 * ajouter une nouvelle categorie au site
@@ -173,13 +177,20 @@ public class ProduitManagedBean {
 		 * on charge le dossier dans l'attribut photo de la classe Categorie
 		 */
 		this.produit.setPhoto(file.getContents());
-		
+
 		Produit pAjout = pService.addProduit(this.produit, this.categorie);
-		
+
 		/*
 		 * on teste ici l'existence de cet ajout
 		 */
 		if (pAjout.getIdProduit() != 0) {
+
+			// On regarde si dans la description du produit il est fait mention de
+			// "superhéros" et si oui on ajoute le produit créé dans la liste
+			// des débutants aka "superhéros"
+			if (pAjout.getDescription().contentEquals("superhéros")) {
+				listeProduitDebutant.add(pAjout);
+			}
 
 			/*
 			 * envoie vers la page XHTML accueil de l'administrateur
@@ -199,7 +210,7 @@ public class ProduitManagedBean {
 	public String updateProduit() {
 
 		int verif = pService.updateProduit(this.produit, this.categorie);
-		
+
 		if (verif != 0) {
 
 			/*
@@ -218,12 +229,11 @@ public class ProduitManagedBean {
 	}
 
 	public String deleteProduit() {
-		
+
 		int verif = pService.deleteProduit(this.produit);
 
 		if (verif != 0) {
 
-			
 			/*
 			 * envoie vers la page XHTML accueil de l'administrateur
 			 */
@@ -238,7 +248,7 @@ public class ProduitManagedBean {
 			return "deleteProduit";
 		}
 	}
-	
+
 	public String searchProduitbyId() {
 
 		/*
@@ -264,10 +274,10 @@ public class ProduitManagedBean {
 
 		}
 		/*
-		 * envoie vers la page XHTML recherche mise à jour avec le resultat de la recherche
+		 * envoie vers la page XHTML recherche mise à jour avec le resultat de
+		 * la recherche
 		 */
 		return "searchProduit";
 	}
-	
-	
+
 }
