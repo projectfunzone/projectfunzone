@@ -34,13 +34,14 @@
 			<p:column headerText="Prix">
 				<h:outputText value="#{lc.prix}" />
 			</p:column>
-			
+
 			<!-- photo du produit ajouté au panier -->
 			<p:column headerText="Image">
 				<h:graphicImage value="#{pr.image}"
 					style="width:100px; height:100px" />
 			</p:column>
 
+			<h:commandButton value="Payer" action="#" />
 		</p:dataTable>
 	</h:form>
 
