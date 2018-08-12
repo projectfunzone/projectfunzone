@@ -37,8 +37,16 @@ public class ClientManagedBean implements Serializable {
 
 	private List<Client> listeGetClient;
 
-	private HttpSession maSession;
 
+	
+
+	/**
+	 * Constructeur vide avec instanciation d'un client
+	 */
+	public ClientManagedBean() {
+		super();
+		this.cl = new Client();
+	}
 	/**
 	 * permet de récupérer la liste des clients au moment de l'instanciation du
 	 * managedBean
@@ -48,13 +56,6 @@ public class ClientManagedBean implements Serializable {
 		this.listeAllClient = clService.getAllClient();
 	}
 
-	/**
-	 * Constructeur vide avec instanciation d'un client
-	 */
-	public ClientManagedBean() {
-		super();
-		this.cl = new Client();
-	}
 
 	/**
 	 * @return the cl
@@ -159,6 +160,8 @@ public class ClientManagedBean implements Serializable {
 			this.listeAllClient = clService.getAllClient();
 
 			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Le compte a bien été crée"));
+			
+//			clService.sendMail(clOut);
 		} else {
 			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Une erreur s'est produit"));
 		}
