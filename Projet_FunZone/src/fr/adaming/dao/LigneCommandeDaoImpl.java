@@ -12,6 +12,7 @@ import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 
 import fr.adaming.model.Categorie;
+import fr.adaming.model.Commande;
 import fr.adaming.model.LigneCommande;
 
 @Stateless
@@ -97,4 +98,19 @@ public class LigneCommandeDaoImpl implements ILigneCommandeDao {
 		return (LigneCommande) query.getSingleResult();
 	}
 
+	
+	
+	
+
+	@SuppressWarnings("unchecked")
+	@Override
+	public List<LigneCommande> getLigneCommandeByIdCommande(LigneCommande lc) {
+		String req = "SELECT lc FROM LigneCommande AS lc WHERE lc.commande.idCommande=:pIdCmd";
+		
+		Query query=em.createQuery(req);
+		
+		query.setParameter("pIdCmd", lc.getCommande().getIdCommande());
+		
+		return query.getResultList();
+	}
 }

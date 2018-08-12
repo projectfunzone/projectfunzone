@@ -103,16 +103,8 @@ public class ProduitServiceImpl implements IProduitService {
 	@Override
 	public Produit getProduitbyId(Produit pr) {
 
-		// recuperer l'étudiant
-		Produit pOut = pDao.getProduitbyId(pr);
-
-		if (pOut != null) {
-
-			return pOut;
-
-		}
-
-		return null;
+		System.out.println(pr.getIdProduit());
+		return pDao.getProduitbyId(pr);
 	}
 
 }

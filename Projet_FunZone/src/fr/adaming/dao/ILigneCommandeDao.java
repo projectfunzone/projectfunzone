@@ -4,6 +4,7 @@ import java.util.List;
 
 import javax.ejb.Local;
 
+import fr.adaming.model.Commande;
 import fr.adaming.model.LigneCommande;
 
 /*
@@ -37,5 +38,7 @@ public interface ILigneCommandeDao {
 	 * methode permettant de rechercher une ligne de commande
 	 */
 	public LigneCommande getLigneCommandebyId (LigneCommande lc);
+	
+	public List<LigneCommande> getLigneCommandeByIdCommande(LigneCommande lc);
 
 }

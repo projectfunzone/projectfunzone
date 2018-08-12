@@ -1,8 +1,9 @@
 package fr.adaming.model;
 
+import java.io.Serializable;
 import java.util.List;
 
-public class Panier {
+public class Panier implements Serializable {
 
 	/*
 	 * transformation de l'association UML en JAVA

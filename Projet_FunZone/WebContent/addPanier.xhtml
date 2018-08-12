@@ -19,10 +19,10 @@
 		<h:panelGrid columns="2">
 		Produit : <p:inputText value="#{panMB.pr.idProduit}"
 				label="n° du produit" />
-		Quantité : <p:inputText value="#{panMB.pr.quantite}"
+		Quantité : <p:inputText value="#{panMB.q}"
 				label="quté souhaitée" />
 			<p:commandButton value="Ajouter au panier"
-				action="#{panMB.ajouterProdPanier}" update="@all" />
+				action="#{panMB.addProdPanier}" update="@all" />
 		</h:panelGrid>
 	</h:form>
 	<h1 style="color: red; text-align: center">

@@ -20,13 +20,12 @@
 
 	<h:form>
 		<h:panelGrid columns="2">
-		Par sa categorie: <p:inputText value="#{}" />
+		Par son id: <p:inputText value="#{pMB.produit.idProduit}" />
 		Par sa designation: <p:inputText value="#{pMB.produit.designation}" />
 		</h:panelGrid>
-		<p:commandButton value="Rechercher par sa categorie" action="#{}"
+		<p:commandButton value="Rechercher par son id" action="#{pMB.searchProduitbyId}"
 			update="@all" />
-		<p:commandButton value="Rechercher par sa designation"
-			action="#{pMB.searchProduit}" update="@all" />
+
 	</h:form>
 
 	<h:form>

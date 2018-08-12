@@ -17,14 +17,15 @@
 
 	<h1>Commande en cours</h1>
 	<h:form>
-		<p:dataTable var="lc" value="#{panMB.pan.listeCommande}">
+		<p:dataTable var="lc" value="#{panMB.listePanier}">
+		
 			<p:column headerText="Id">
 				<h:outputText value="#{lc.idLigneCommande}" />
 			</p:column>
 
 			<!-- nom du produit ajouté au panier -->
 			<p:column headerText="Nom du produit">
-				<h:outputText value="#{panMB.pr.designation}" />
+				<h:outputText value="#{lc.produit.designation}" />
 			</p:column>
 
 			<p:column headerText="Quantité">
