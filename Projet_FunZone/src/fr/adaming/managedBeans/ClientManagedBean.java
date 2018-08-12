@@ -121,7 +121,7 @@ public class ClientManagedBean implements Serializable {
 					new FacesMessage("Il n'y a pas de client associé à cet id"));
 		}
 
-		return "searchClient";
+		return "";
 
 	}
 
@@ -141,7 +141,7 @@ public class ClientManagedBean implements Serializable {
 					new FacesMessage("Il n'y a pas de client correspondant à ce nom ou cet id dans la base de donnée"));
 		}
 
-		return "searchClient";
+		return "";
 
 	}
 
