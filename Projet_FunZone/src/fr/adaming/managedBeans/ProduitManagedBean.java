@@ -37,6 +37,7 @@ public class ProduitManagedBean {
 	private List<Produit> listeProduit;
 	private List<Produit> listeProduitFiltre;
 	private List<Produit> listeProduitDebutant;
+	private List<Produit> listeProduitFlash;
 
 	private UploadedFile file;
 	
@@ -155,6 +156,20 @@ public class ProduitManagedBean {
 		this.listeProduitDebutant = listeProduitDebutant;
 	}
 
+	/**
+	 * @return the listeProduitFlash
+	 */
+	public List<Produit> getListeProduitFlash() {
+		return listeProduitFlash;
+	}
+
+	/**
+	 * @param listeProduitFlash the listeProduitFlash to set
+	 */
+	public void setListeProduitFlash(List<Produit> listeProduitFlash) {
+		this.listeProduitFlash = listeProduitFlash;
+	}
+
 	@SuppressWarnings({ "unchecked", "rawtypes" })
 	public boolean filterByPrice(Object value, Object filter, Locale locale) {
 		String filterText = (filter == null) ? null : filter.toString().trim();
@@ -187,6 +202,9 @@ public class ProduitManagedBean {
 			// des débutants aka "superhéros"
 			if (pAjout.getDescription().contentEquals("superhéros")) {
 				listeProduitDebutant.add(pAjout);
+			}
+			if (pAjout.isVenteFlash() == true) {
+				listeProduitFlash.add(pAjout);
 			}
 
 			//envoie vers la page XHTML accueil de l'administrateur

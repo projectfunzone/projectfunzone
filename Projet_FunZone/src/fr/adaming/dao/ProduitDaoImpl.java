@@ -64,10 +64,11 @@ public class ProduitDaoImpl implements IProduitDao {
 	@Override
 	public int updateProduit(Produit pr) {
 
-		String req = "UPDATE Produit as pr SET pr.designation =:pDesign, pr.description =:pDescription, pr.prix=:pPrix, pr.quantite=:pQuantite, pr.photo=:pPhotoP WHERE pr.idProduit =:pIdP AND pr.categorie.idCategorie=:pIdC ";
+		String req = "UPDATE Produit as pr SET pr.venteFlash =:pFlash, pr.designation =:pDesign, pr.description =:pDescription, pr.prix=:pPrix, pr.quantite=:pQuantite, pr.photo=:pPhotoP WHERE pr.idProduit =:pIdP AND pr.categorie.idCategorie=:pIdC ";
 
 		Query query = em.createQuery(req);
 
+		query.setParameter("pFlash", pr.isVenteFlash());
 		query.setParameter("pDesign", pr.getDesignation());
 		query.setParameter("pDescription", pr.getDescription());
 		query.setParameter("pPrix", pr.getPrix());
