@@ -203,12 +203,12 @@ public class ProduitManagedBean {
 			if (pAjout.getDescription().contentEquals("superhéros")) {
 				listeProduitDebutant.add(pAjout);
 			}
-			if (pAjout.isVenteFlash() == true) {
+			if (pAjout.isVenteFlash()) {
 				listeProduitFlash.add(pAjout);
 			}
 
 			//envoie vers la page XHTML accueil de l'administrateur
-			return "accueil";
+			return "accueilAdmin";
 
 		} else {
 
@@ -228,7 +228,7 @@ public class ProduitManagedBean {
 		if (verif != 0) {
 
 			//envoie vers la page XHTML accueil de l'administrateur
-			return "accueil";
+			return "accueilAdmin";
 
 		} else {
 
@@ -248,7 +248,7 @@ public class ProduitManagedBean {
 		if (verif != 0) {
 
 			//envoie vers la page XHTML accueil de l'administrateur
-			return "accueil";
+			return "accueilAdmin";
 
 		} else {
 
