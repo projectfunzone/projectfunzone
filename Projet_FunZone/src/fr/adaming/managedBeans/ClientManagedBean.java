@@ -294,9 +294,15 @@ public class ClientManagedBean implements Serializable {
 			FacesContext.getCurrentInstance().addMessage(null,
 					new FacesMessage("Vous n'êtes pas connecté à un compte client"));
 		}
-		
+
 		return "";
 
 	}
-
+	
+	public String payerCommande (){
+		
+		clService.sendMail(this.cl);
+		
+		return "accueil";
+	}
 }

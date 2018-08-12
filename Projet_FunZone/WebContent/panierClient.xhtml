@@ -40,9 +40,9 @@
 				<h:graphicImage value="#{pr.image}"
 					style="width:100px; height:100px" />
 			</p:column>
-
-			<h:commandButton value="Payer" action="#" />
 		</p:dataTable>
+		<p:commandButton value="Payer" action="#{clMB.payerCommande}"
+			update="@all" />
 	</h:form>
 
 </body>

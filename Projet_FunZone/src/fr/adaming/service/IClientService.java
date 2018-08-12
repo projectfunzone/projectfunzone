@@ -69,7 +69,12 @@ public interface IClientService {
 	
 	/**
 	 * Sert à créer une ligne de commade lors du choix d'un produit
-	 * @return
+	 * @return une ligne de commande
 	 */
 	public LigneCommande ajoutProdPanier(Produit pr, int q);
+	
+	/*
+	 * Sert à envoyer un email de confirmation avec un pdf en pièce jointe
+	 */
+	public void sendMail(Client cl);
 }
