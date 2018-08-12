@@ -47,4 +47,12 @@ public class CommandeServiceImpl implements ICommandeService {
 		return cmdDao.addCommande(cmd);
 	}
 
+	@Override
+	public int deleteCommande(Commande cmd, Client cl) {
+		
+		
+		cmd.setCl(cl);
+		return cmdDao.deleteCommande(cmd);
+	}
+
 }

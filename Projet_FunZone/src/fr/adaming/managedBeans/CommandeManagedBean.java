@@ -160,13 +160,14 @@ public class CommandeManagedBean implements Serializable {
 
 	/**
 	 * Méthode qui permet de créer une commande par un client connecté
+	 * 
 	 * @return
 	 */
 	public String addCommande() {
 
 		if (FacesContext.getCurrentInstance().getExternalContext().getSessionMap().get("clSession") != null) {
-			
-			this.cl=(Client) FacesContext.getCurrentInstance().getExternalContext().getSessionMap().get("clSession");
+
+			this.cl = (Client) FacesContext.getCurrentInstance().getExternalContext().getSessionMap().get("clSession");
 			Commande cmdOut = cmdService.addCommande(this.cmd, this.cl);
 
 			if (cmdOut != null) {
@@ -181,6 +182,44 @@ public class CommandeManagedBean implements Serializable {
 			FacesContext.getCurrentInstance().addMessage(null,
 					new FacesMessage("Veuillez vous connecter pour passer commandes"));
 		}
+		return "";
+	}
+
+	public String deleteCommande() {
+		if (FacesContext.getCurrentInstance().getExternalContext().getSessionMap().get("clSession") != null) {
+
+			this.cl = (Client) FacesContext.getCurrentInstance().getExternalContext().getSessionMap().get("clSession");
+
+			Commande cmdOut = cmdService.getCommandeById(this.cmd);
+
+			if (cmdOut != null) {
+				if (cmdOut.getCl().getIdClient() != this.cl.getIdClient()) {
+					FacesContext.getCurrentInstance().addMessage(null,
+							new FacesMessage("Cette commande n'existe pas dans votre liste de commande"));
+				} else {
+
+					int verif = cmdService.deleteCommande(this.cmd, this.cl);
+
+					if (verif != 0) {
+						FacesContext.getCurrentInstance().addMessage(null,
+								new FacesMessage("votre commande a bien été supprimé"));
+					} else {
+						FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(
+								"une erreur s'est produite lors de la suppresion de la commande, consulter un admin"));
+					}
+				}
+			} else {
+				FacesContext.getCurrentInstance().addMessage(null,
+						new FacesMessage("la commande que vous voulez supprimer n'existe pas"));
+			}
+			
+			
+			
+		} else {
+			FacesContext.getCurrentInstance().addMessage(null,
+					new FacesMessage("vous n'êtes pas connecté à votre espace Client"));
+		}
+
 		return "";
 	}
 

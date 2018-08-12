@@ -43,5 +43,13 @@ public interface ICommandeDao {
 	 * @return
 	 */
 	public Commande addCommande(Commande cmd);
-
+	
+	/**
+	 * Méthode qui permet de supprimer une commande
+	 * @param cmd
+	 * @return
+	 */
+	public int deleteCommande (Commande cmd);
+	
+	
 }

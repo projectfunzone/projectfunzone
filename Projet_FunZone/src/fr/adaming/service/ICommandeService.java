@@ -44,5 +44,13 @@ public interface ICommandeService {
 	 */
 	public Commande addCommande(Commande cmd,Client cl);
 	
+	/**
+	 * Méthode qui permet de supprimer une commande de la base de donnée
+	 * @param cmd
+	 * @param cl
+	 * @return
+	 */
+	public int deleteCommande(Commande cmd,Client cl);
+	
 
 }
