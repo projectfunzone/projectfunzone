@@ -16,24 +16,41 @@
 	</ui:insert>
 
 	<h1>Liste des catégories</h1>
+	
 	<h:form>
-		<p:dataTable var="c" value="#{catMB.listeCategorie}">
-			<p:column headerText="Id">
-				<h:outputText value="#{c.idCategorie}" />
+		<p:dataTable var="cat" value="#{catMB.listeCategorie}"
+			widgetVar="categoriesTable"
+			emptyMessage="Pas de catégorie trouvées pour ces critères"
+			filteredValue="#{catMB.listeCategorieFiltre}">
+
+			<f:facet name="header">
+				<p:outputPanel>
+					<h:outputText value="Rechercher sur les champs :" />
+					<p:inputText id="globalFilter"
+						onkeyup="PF('categoriesTable').filter()" style="width:150px"
+						placeholder="mot clef" />
+				</p:outputPanel>
+			</f:facet>
+
+			<p:column filterBy="#{cat.idCategorie}" headerText="ID" footerText="ID"
+				filterMatchMode="contains">
+				<h:outputText value="#{cat.idCategorie}" />
 			</p:column>
 
-			<p:column headerText="Nom">
-				<h:outputText value="#{c.nomCategorie}" />
+			<p:column filterBy="#{cat.nomCategorie}" headerText="Nom"
+				footerText="Nom" filterMatchMode="contains">
+				<h:outputText value="#{cat.nomCategorie}" />
 			</p:column>
 
-			<p:column headerText="Description">
-				<h:outputText value="#{c.description}" />
+			<p:column filterBy="#{cat.description}" headerText="Description"
+				footerText="Description" filterMatchMode="contains">
+				<h:outputText value="#{cat.description}" />
 			</p:column>
-
+			
 			<p:column headerText="Image">
-				<h:graphicImage value="#{c.image}" style="width:100px; height:100px"/>
+				<h:graphicImage value="#{cat.image}"
+					style="width:100px; height:100px" />
 			</p:column>
-
 		</p:dataTable>
 	</h:form>
 

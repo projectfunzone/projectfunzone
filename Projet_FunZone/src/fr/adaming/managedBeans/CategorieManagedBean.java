@@ -2,6 +2,7 @@ package fr.adaming.managedBeans;
 
 import java.io.Serializable;
 import java.util.List;
+import java.util.Locale;
 
 import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
@@ -30,6 +31,9 @@ public class CategorieManagedBean implements Serializable {
 	private Categorie categorie;
 	private boolean indice;
 	private List<Categorie> listeCategorie;
+	private List<Categorie> listeCategorieFiltre;
+	
+	
 	private UploadedFile file;
 	
 	//transformation de l'association UML en JAVA
@@ -110,8 +114,46 @@ public class CategorieManagedBean implements Serializable {
 	 */
 	public void setFile(UploadedFile file) {
 		this.file = file;
+	}	
+
+	/**
+	 * @return the listeCategorieFiltre
+	 */
+	public List<Categorie> getListeCategorieFiltre() {
+		return listeCategorieFiltre;
 	}
 
+	/**
+	 * @param listeCategorieFiltre the listeCategorieFiltre to set
+	 */
+	public void setListeCategorieFiltre(List<Categorie> listeCategorieFiltre) {
+		this.listeCategorieFiltre = listeCategorieFiltre;
+	}
+	
+	public List<String> getNomCategorie() {
+		return getNomCategorie();
+	}
+
+	public List<String> getDescription() {
+		return getDescription();
+	}
+
+	
+	@SuppressWarnings({ "unchecked", "rawtypes" })
+	public boolean filterByPrice(Object value, Object filter, Locale locale) {
+		String filterText = (filter == null) ? null : filter.toString().trim();
+		if (filterText == null || filterText.equals("")) {
+			return true;
+		}
+
+		if (value == null) {
+			return false;
+		}
+
+		return ((Comparable) value).compareTo(Integer.valueOf(filterText)) > 0;
+	}
+	
+	
 	/*
 	 * ajouter une nouvelle categorie au site
 	 */
