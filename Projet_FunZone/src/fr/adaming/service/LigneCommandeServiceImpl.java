@@ -4,12 +4,10 @@ import java.util.List;
 
 import javax.ejb.EJB;
 import javax.ejb.Stateful;
-import javax.persistence.Query;
 
 import fr.adaming.dao.ILigneCommandeDao;
 import fr.adaming.model.Commande;
 import fr.adaming.model.LigneCommande;
-import fr.adaming.model.Produit;
 
 /**
  *  Implementation de l'interface LigneCommandeService pour redéfinir les méthodes de LigneCommande
@@ -31,8 +29,8 @@ public class LigneCommandeServiceImpl implements ILigneCommandeService {
 	}
 
 	@Override
-	public LigneCommande addLigneCommande(LigneCommande lc) {
-
+	public LigneCommande addLigneCommande(LigneCommande lc, Commande cmd) {
+		lc.setCommande(cmd);
 		return lcDao.addLigneCommande(lc);
 	}
 

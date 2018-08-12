@@ -6,6 +6,7 @@ import javax.ejb.Local;
 
 import fr.adaming.model.Commande;
 import fr.adaming.model.LigneCommande;
+import fr.adaming.model.Produit;
 
 /**
  * Iinterface definissant les methodes de LigneCommandeService
@@ -22,7 +23,7 @@ public interface ILigneCommandeService {
 	/**
 	 * methode d'ajout d'une categorie
 	 */
-	public LigneCommande addLigneCommande(LigneCommande lc);
+	public LigneCommande addLigneCommande(LigneCommande lc, Commande cmd);
 	
 	/**
 	 * methode de modification d'une categorie

@@ -11,16 +11,16 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
 import javax.faces.context.FacesContext;
 
-
+import fr.adaming.model.Client;
 import fr.adaming.model.LigneCommande;
 import fr.adaming.model.Panier;
 import fr.adaming.model.Produit;
 import fr.adaming.service.IClientService;
+import fr.adaming.service.IPanierService;
 import fr.adaming.service.IProduitService;
 
 /**
- * @author Thibault
- * ManagedBean du Panier
+ * @author Thibault ManagedBean du Panier
  */
 @ManagedBean(name = "panMB")
 @RequestScoped
@@ -34,7 +34,7 @@ public class PanierManagedBean implements Serializable {
 	private int q;
 	private LigneCommande lc;
 
-	private List<LigneCommande> listePanier=new ArrayList<>();
+	private List<LigneCommande> listePanier = new ArrayList<>();
 
 	/**
 	 * Transformation de l'association UML en JAVA
@@ -43,6 +43,9 @@ public class PanierManagedBean implements Serializable {
 	private IProduitService pService;
 	@EJB
 	private IClientService clService;
+
+	@EJB
+	private IPanierService panService;
 
 	/**
 	 * Constructeur vide
@@ -56,12 +59,12 @@ public class PanierManagedBean implements Serializable {
 
 	@PostConstruct
 	public void init() {
-		
-		//récupère le panier dans la session
+
+		// récupère le panier dans la session
 		Panier panSession = (Panier) FacesContext.getCurrentInstance().getExternalContext().getSessionMap()
 				.get("panierClient");
 
-				// on récupere la session du panier et on verifie qu'elle ne soit pas
+		// on récupere la session du panier et on verifie qu'elle ne soit pas
 		// vide
 		if (panSession != null) {
 
@@ -69,7 +72,7 @@ public class PanierManagedBean implements Serializable {
 			// ne soit pas vide
 			if (panSession.getListeCommande() != null) {
 
-								// on stocke la nouvelle liste dans la nouvelle
+				// on stocke la nouvelle liste dans la nouvelle
 				for (LigneCommande elem : panSession.getListeCommande()) {
 					this.listePanier.add(elem);
 				}
@@ -160,12 +163,11 @@ public class PanierManagedBean implements Serializable {
 	 */
 	public String addProdPanier() {
 
-		//le panier dans la session est récupérer dans le postConstruct
+		// le panier dans la session est récupérer dans le postConstruct
 
 		// on récupere le produit de la base de donnée.
 		Produit prOut = pService.getProduitbyId(this.pr);
 
-		
 		// on créer alors la ligne de commande associée
 		LigneCommande lcOut = clService.ajoutProdPanier(prOut, q);
 
@@ -173,7 +175,7 @@ public class PanierManagedBean implements Serializable {
 		if (lcOut != null) {
 
 			System.out.println(lcOut);
-			
+
 			System.out.println(this.listePanier);
 			// on ajoute à la liste de ligne de commande cette nouvelle nouvelle
 			// ligne de commande
@@ -198,5 +200,54 @@ public class PanierManagedBean implements Serializable {
 		}
 
 	}
+
+	
+	/**
+	 * Méthode qui permet de créer la commande avec les produits et les quantités associé
+	 * @return
+	 */
+	public String créerCommande() {
+
+		// Récupérer le client dans la session
+		Client clOut = (Client) FacesContext.getCurrentInstance().getExternalContext().getSessionMap().get("clSession");
+
+		if (clOut != null) {
+
+			// créer une commande avec le panier qui est dans la session
+			int verif = panService.créerCommande(this.listePanier, clOut);
+
+			switch (verif) {
+			case 0:
+				FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Erreur type 1 : La création de la commande n'a pas fonctionné, merci de réessayer"));
+				return "";
+
+			case 1:
+				
+				FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("La commande est créée"));
+				
+				//vider le panier après avoir passé la commande
+				FacesContext.getCurrentInstance().getExternalContext().getSessionMap().put("panierClient", null);
+				
+				this.listePanier=null;
+				return "";
+
+			case 2:
+				FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Erreur type 2 : Une erreur s'est produit lors de la création de la commande, merci de réessayer"));
+				return "";
+
+			default:
+				return "";
+			}
+
+		} else {
+			FacesContext.getCurrentInstance().addMessage(null,
+					new FacesMessage("Veuillez vous connecter pour passer commande"));
+		}
+
+		return "";
+	}
+	
+	
+
 
 }

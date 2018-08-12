@@ -24,6 +24,7 @@ public class LigneCommandeDaoImpl implements ILigneCommandeDao {
 	/**
 	 * @see fr.adaming.dao.ILigneCommandeDao#getAllLigneCommandes()
 	 */
+	@SuppressWarnings("unchecked")
 	@Override
 	public List<LigneCommande> getAllLigneCommandes() {
 
@@ -31,9 +32,9 @@ public class LigneCommandeDaoImpl implements ILigneCommandeDao {
 		
 		Query query = em.createQuery(req);
 
-		List<LigneCommande> listeQuery = query.getResultList();
+		
 
-		return listeQuery;
+		return query.getResultList();
 	}
 
 	/**
