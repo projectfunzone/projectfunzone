@@ -11,12 +11,11 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
 import javax.faces.context.FacesContext;
 
-import fr.adaming.model.Commande;
+
 import fr.adaming.model.LigneCommande;
 import fr.adaming.model.Panier;
 import fr.adaming.model.Produit;
 import fr.adaming.service.IClientService;
-import fr.adaming.service.ILigneCommandeService;
 import fr.adaming.service.IProduitService;
 
 @ManagedBean(name = "panMB")
@@ -54,6 +53,7 @@ public class PanierManagedBean implements Serializable {
 	@PostConstruct
 	public void init() {
 		
+		//récupère le panier dans la session
 		Panier panSession = (Panier) FacesContext.getCurrentInstance().getExternalContext().getSessionMap()
 				.get("panierClient");
 
@@ -156,31 +156,7 @@ public class PanierManagedBean implements Serializable {
 	 */
 	public String addProdPanier() {
 
-//		// on créé une session pour le panier
-//		Panier panSession = (Panier) FacesContext.getCurrentInstance().getExternalContext().getSessionMap()
-//				.get("panierClient");
-//
-//		// on créé une ligne de commande pour le produit
-//		List<LigneCommande> newList = new ArrayList<LigneCommande>();
-//
-//		// on récupere la session du panier et on verifie qu'elle ne soit pas
-//		// vide
-//		if (panSession != null) {
-//
-//			// on recupere la liste de commande du panier et on verifie qu'elle
-//			// ne soit pas vide
-//			if (panSession.getListeCommande() != null) {
-//
-//				// on recupere l'ancienne ligne de commande par la nouvelle
-//				List<LigneCommande> oldlist = panSession.getListeCommande();
-//
-//				// on stocke la nouvelle liste dans la nouvelle
-//				for (LigneCommande elem : oldlist) {
-//					newList.add(elem);
-//				}
-//
-//			}
-//		}
+		//le panier dans la session est récupérer dans le postConstruct
 
 		// on récupere le produit de la base de donnée.
 		Produit prOut = pService.getProduitbyId(this.pr);
