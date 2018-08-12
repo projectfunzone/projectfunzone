@@ -21,8 +21,7 @@ public class LigneCommandeDaoImpl implements ILigneCommandeDao {
 	@PersistenceContext(unitName = "PFZ")
 	private EntityManager em;
 
-	/*
-	 * (non-Javadoc)
+	/**
 	 * @see fr.adaming.dao.ILigneCommandeDao#getAllLigneCommandes()
 	 */
 	@Override
@@ -37,8 +36,7 @@ public class LigneCommandeDaoImpl implements ILigneCommandeDao {
 		return listeQuery;
 	}
 
-	/*
-	 * (non-Javadoc)
+	/**
 	 * @see fr.adaming.dao.ILigneCommandeDao#addLigneCommande(fr.adaming.model.LigneCommande)
 	 */
 	@Override
@@ -48,8 +46,7 @@ public class LigneCommandeDaoImpl implements ILigneCommandeDao {
 		return lc;
 	}
 
-	/*
-	 * (non-Javadoc)
+	/**
 	 * @see fr.adaming.dao.ILigneCommandeDao#updateLigneCommande(fr.adaming.model.LigneCommande)
 	 */
 	@Override
@@ -65,8 +62,7 @@ public class LigneCommandeDaoImpl implements ILigneCommandeDao {
 		return query.executeUpdate();
 	}
 
-	/*
-	 * (non-Javadoc)
+	/**
 	 * @see fr.adaming.dao.ILigneCommandeDao#deleteLigneCommande(fr.adaming.model.LigneCommande)
 	 */
 	@Override
@@ -83,8 +79,7 @@ public class LigneCommandeDaoImpl implements ILigneCommandeDao {
 		return query.executeUpdate();
 	}
 
-	/*
-	 * (non-Javadoc)
+	/**
 	 * @see fr.adaming.dao.ILigneCommandeDao#getLigneCommandebyId(fr.adaming.model.LigneCommande)
 	 */
 	@Override
@@ -98,10 +93,9 @@ public class LigneCommandeDaoImpl implements ILigneCommandeDao {
 		return (LigneCommande) query.getSingleResult();
 	}
 
-	
-	
-	
-
+	/**
+	 * @see fr.adaming.dao.ILigneCommandeDao#getLigneCommandeByIdCommande(fr.adaming.model.LigneCommande)
+	 */
 	@SuppressWarnings("unchecked")
 	@Override
 	public List<LigneCommande> getLigneCommandeByIdCommande(LigneCommande lc) {

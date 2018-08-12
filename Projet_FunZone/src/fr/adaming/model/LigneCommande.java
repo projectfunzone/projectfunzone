@@ -9,6 +9,9 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+/**
+ * Definition de la classe LigneCommande
+ */
 @Entity
 @Table(name = "ligneCommandes")
 public class LigneCommande {
@@ -21,7 +24,7 @@ public class LigneCommande {
 	private int quantite;
 	private double prix;
 
-	/*
+	/**
 	 * Transformation de l'association UML en JAVA entre Ligne de Commande et
 	 * Produit
 	 */
@@ -29,7 +32,7 @@ public class LigneCommande {
 	@JoinColumn(name = "produit_id", referencedColumnName = "id_produit")
 	private Produit produit;
 
-	/*
+	/**
 	 * Transformation de l'association UML en JAVA entre Ligne de Commande et
 	 * Commande
 	 */
@@ -37,7 +40,7 @@ public class LigneCommande {
 	@JoinColumn(name = "commande_id", referencedColumnName = "id_commande")
 	private Commande commande;
 
-	/*
+	/**
 	 * Declaration des constructeurs
 	 */
 	/**

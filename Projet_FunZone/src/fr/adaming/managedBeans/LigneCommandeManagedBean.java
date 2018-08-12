@@ -20,7 +20,7 @@ import fr.adaming.service.ILigneCommandeService;
 @RequestScoped
 public class LigneCommandeManagedBean implements Serializable {
 
-	/*
+	/**
 	 * Declaration des attributs du ManagedBean Categorie
 	 */
 	HttpSession maSession;
@@ -28,13 +28,13 @@ public class LigneCommandeManagedBean implements Serializable {
 	private boolean indice;
 	private List<LigneCommande> listeLC;
 	
-	/*
+	/**
 	 * Transformation de l'association UML en java
 	 */
 	@EJB
 	private ILigneCommandeService lcService;
 
-	/*
+	/**
 	 * Constructeur vide du ManagedBean
 	 */
 	public LigneCommandeManagedBean() {
@@ -48,7 +48,7 @@ public class LigneCommandeManagedBean implements Serializable {
 		this.listeLC = lcService.getAllLigneCommande();
 	}
 	
-	/*
+	/**
 	 * Declaration des getteurs et setteurs
 	 */
 
@@ -96,86 +96,76 @@ public class LigneCommandeManagedBean implements Serializable {
 		this.listeLC = listeLC;
 	}
 
-	/*
-	 * ajouter une nouvelle categorie au site
+	/**
+	 * ajouter une nouvelle ligne au site
 	 */
 	public String addLigneCommande() {
 
 		
-		/*
-		 * on teste ici l'existence de cet ajout
-		 */
+		//on teste ici l'existence de cet ajout
 		if (lcService.addLigneCommande(this.ligneCommande).getIdLigneCommande()!= 0) {
 
-			/*
-			 * envoie vers la page XHTML accueil de l'administrateur
-			 */
+			//envoie vers la page XHTML accueil de l'administrateur
 			return "";
 
 		} else {
 
 			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Entrée invalide"));
-			/*
-			 * renvoie vers la page XHTML d'ajout d'une categorie
-			 */
+			//renvoie vers la page XHTML d'ajout d'une categorie
 			return "";
 		}
 	}
 
-	public String updateCategorie() {
+	/**
+	 * modifier une ligne du site
+	 */
+	public String updateLigneCommande() {
 
 		if (lcService.updateLigneCommande(this.ligneCommande) != 0) {
 
-			/*
-			 * envoie vers la page XHTML accueil de l'administrateur
-			 */
+			//envoie vers la page XHTML accueil de l'administrateur
 			return "";
 
 		} else {
 
 			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Modification invalide"));
-			/*
-			 * renvoie vers la page XHTML d'ajout d'une categorie
-			 */
+			
+			//renvoie vers la page XHTML d'ajout d'une ligne de commande
 			return "";
 		}
 	}
 
-	public String deleteCategorie() {
+	/**
+	 * supprimer une ligne du site
+	 */
+	public String deleteLigneCommande() {
 
 		if (lcService.deleteLigneCommande(this.ligneCommande) != 0) {
 
 			
-			/*
-			 * envoie vers la page XHTML accueil de l'administrateur
-			 */
+			//envoie vers la page XHTML accueil de l'administrateur
 			return "";
 
 		} else {
 
 			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Suppression invalide"));
-			/*
-			 * renvoie vers la page XHTML d'ajout d'une categorie
-			 */
+			// renvoie vers la page XHTML d'ajout d'une ligne de commande
 			return "";
 		}
 	}
 	
+	/**
+	 * rechercher une ligne du site par son id
+	 */
 	public String searchLigneCommandebyId() {
 
-		/*
-		 * recherche et stockage de la categorie recherchée
-		 */
+		//recherche et stockage de la ligne de commande recherchée
 		LigneCommande lcSearch = lcService.getLigneCommandebyId(ligneCommande);
 
-		/*
-		 * On test le bon résultat de la recherche
-		 */
+		// On test le bon résultat de la recherche
 		if (lcSearch != null) {
 
-			/*
-			 * on stocke la recherche dans l'attribut du ManagedBean
-			 */
+			//on stocke la recherche dans l'attribut du ManagedBean
 			this.indice = true;
 			this.ligneCommande = lcSearch;
 
@@ -185,9 +175,7 @@ public class LigneCommandeManagedBean implements Serializable {
 			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Supression invalide"));
 
 		}
-		/*
-		 * envoie vers la page XHTML recherche mise à jour avec le resultat de la recherche
-		 */
+		//envoie vers la page XHTML recherche mise à jour avec le resultat de la recherche
 		return "";
 	}
 

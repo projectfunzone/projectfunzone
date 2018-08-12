@@ -18,11 +18,15 @@ import fr.adaming.model.Produit;
 import fr.adaming.service.IClientService;
 import fr.adaming.service.IProduitService;
 
+/**
+ * @author Thibault
+ * ManagedBean du Panier
+ */
 @ManagedBean(name = "panMB")
 @RequestScoped
 public class PanierManagedBean implements Serializable {
 
-	/*
+	/**
 	 * Les attributs utilisés dans le panier
 	 */
 	private Panier pan;
@@ -32,7 +36,7 @@ public class PanierManagedBean implements Serializable {
 
 	private List<LigneCommande> listePanier=new ArrayList<>();
 
-	/*
+	/**
 	 * Transformation de l'association UML en JAVA
 	 */
 	@EJB
@@ -149,7 +153,7 @@ public class PanierManagedBean implements Serializable {
 		this.listePanier = listePanier;
 	}
 
-	/*
+	/**
 	 * Methode permettant d'ajouter un produit dans son panier en passant par
 	 * une ligne de commande Ce panier n'est pas stocké dans la base de donnée
 	 * (transient) mais uniquement dans la session créée pour l'occasion
@@ -190,7 +194,7 @@ public class PanierManagedBean implements Serializable {
 			// panier
 			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("l'ajout a échoué"));
 
-			return "ajoutPanier";
+			return "addPanier";
 		}
 
 	}

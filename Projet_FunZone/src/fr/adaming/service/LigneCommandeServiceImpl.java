@@ -11,14 +11,14 @@ import fr.adaming.model.Commande;
 import fr.adaming.model.LigneCommande;
 import fr.adaming.model.Produit;
 
-/*
+/**
  *  Implementation de l'interface LigneCommandeService pour redéfinir les méthodes de LigneCommande
  *  @author Thibault
  */
 @Stateful
 public class LigneCommandeServiceImpl implements ILigneCommandeService {
 
-	/*
+	/**
 	 * transformation de l'association UML en java et injection dépendance (EJB)
 	 */
 	@EJB

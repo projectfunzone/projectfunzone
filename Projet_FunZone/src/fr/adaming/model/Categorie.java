@@ -14,16 +14,15 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Transient;
 
-/*
+/**
  * Definition de la classe Categorie
  */
-
 @SuppressWarnings("serial")
 @Entity
 @Table(name = "categories")
 public class Categorie implements Serializable {
 
-	/* 
+	/**
 	 * Declaration des attributs de la classe
 	 */
 	@Id

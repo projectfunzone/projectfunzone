@@ -15,7 +15,7 @@ import javax.persistence.Table;
 import javax.persistence.Transient;
 
 
-/*
+/**
  * Definition de la classe Produit
  */
 @SuppressWarnings("serial")
@@ -23,7 +23,7 @@ import javax.persistence.Transient;
 @Table(name="produits")
 public class Produit implements Serializable{
 
-	/* 
+	/** 
 	 * Declaration des attributs de la classe
 	 */
 	@Id

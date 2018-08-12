@@ -11,22 +11,20 @@ import org.apache.commons.codec.binary.Base64;
 
 import fr.adaming.model.Produit;
 
-/* 
+/**
  * Implementation de l'interface ProduitDao pour redéfinir les méthodes de Produit
  * @author Thibault
  */
 @Stateless
 public class ProduitDaoImpl implements IProduitDao {
 
-	/*
+	/**
 	 * Instanciation du Entity Manager
 	 */
 	@PersistenceContext(unitName = "PFZ")
 	private EntityManager em;
 
-	/*
-	 * (non-Javadoc)
-	 * 
+	/**
 	 * @see fr.adaming.dao.ICategorieDao#getAllCategories()
 	 */
 	@SuppressWarnings("unchecked")
@@ -47,9 +45,7 @@ public class ProduitDaoImpl implements IProduitDao {
 		return listeQuery;
 	}
 
-	/*
-	 * (non-Javadoc)
-	 * 
+	/**
 	 * @see
 	 * fr.adaming.dao.ICategorieDao#addCategorie(fr.adaming.model.Categorie)
 	 */
@@ -61,9 +57,7 @@ public class ProduitDaoImpl implements IProduitDao {
 		return pr;
 	}
 
-	/*
-	 * (non-Javadoc)
-	 * 
+	/**
 	 * @see
 	 * fr.adaming.dao.ICategorieDao#updateCategorie(fr.adaming.model.Categorie)
 	 */
@@ -86,8 +80,7 @@ public class ProduitDaoImpl implements IProduitDao {
 		return query.executeUpdate();
 	}
 
-	/*
-	 * (non-Javadoc)
+	/**
 	 * @see
 	 * fr.adaming.dao.ICategorieDao#deleteCategorie(fr.adaming.model.Categorie)
 	 */
@@ -105,8 +98,7 @@ public class ProduitDaoImpl implements IProduitDao {
 		return query.executeUpdate();
 	}
 
-	/*
-	 * (non-Javadoc)
+	/**
 	 * @see fr.adaming.dao.ICategorieDao#getCategoriebyId(fr.adaming.model.Categorie)
 	 */
 	@Override

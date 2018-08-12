@@ -11,7 +11,7 @@ import org.apache.commons.codec.binary.Base64;
 
 import fr.adaming.model.Categorie;
 
-/*
+/**
  * Implementation de l'interface CategorieDao pour redéfinir les méthodes de Categorie
  * @author Thibault
  */
@@ -22,9 +22,8 @@ public class CategorieDaoImpl implements ICategorieDao {
 	@PersistenceContext(unitName = "PFZ")
 	private EntityManager em;
 
-	/*
-	 * (non-Javadoc)
-	 * 
+	/**
+	 *  
 	 * @see fr.adaming.dao.ICategorieDao#getAllCategories()
 	 */
 	@SuppressWarnings("unchecked")
@@ -47,9 +46,7 @@ public class CategorieDaoImpl implements ICategorieDao {
 		return listeQuery;
 	}
 
-	/*
-	 * (non-Javadoc)
-	 * 
+	/**
 	 * @see
 	 * fr.adaming.dao.ICategorieDao#addCategorie(fr.adaming.model.Categorie)
 	 */
@@ -61,9 +58,7 @@ public class CategorieDaoImpl implements ICategorieDao {
 		return c;
 	}
 
-	/*
-	 * (non-Javadoc)
-	 * 
+	/** 
 	 * @see
 	 * fr.adaming.dao.ICategorieDao#updateCategorie(fr.adaming.model.Categorie)
 	 */
@@ -82,8 +77,7 @@ public class CategorieDaoImpl implements ICategorieDao {
 		return query.executeUpdate();
 	}
 
-	/*
-	 * (non-Javadoc)
+	/**
 	 * @see
 	 * fr.adaming.dao.ICategorieDao#deleteCategorie(fr.adaming.model.Categorie)
 	 */
@@ -101,8 +95,7 @@ public class CategorieDaoImpl implements ICategorieDao {
 		return query.executeUpdate();
 	}
 
-	/*
-	 * (non-Javadoc)
+	/**
 	 * @see fr.adaming.dao.ICategorieDao#getCategoriebyId(fr.adaming.model.Categorie)
 	 */
 	@Override
@@ -117,8 +110,7 @@ public class CategorieDaoImpl implements ICategorieDao {
 		return (Categorie) query.getSingleResult();
 	}
 	
-	/*
-	 * (non-Javadoc)
+	/**
 	 * @see fr.adaming.dao.ICategorieDao#getCategoriebyNomCategorie(fr.adaming.model.Categorie)
 	 */
 	@Override

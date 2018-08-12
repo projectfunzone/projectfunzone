@@ -19,15 +19,13 @@ import fr.adaming.model.Categorie;
 @Stateful
 public class CategorieServiceImpl implements ICategorieService {
 
-	/*
+	/**
 	 * transformation de l'association UML en java et injection dépendance (EJB)
 	 */
 	@EJB
 	private ICategorieDao cDao;
 
-	/*
-	 * (non-Javadoc)
-	 * 
+	/** 
 	 * @see fr.adaming.service.ICategorieService#getAllCategories()
 	 */
 	@Override
@@ -36,9 +34,7 @@ public class CategorieServiceImpl implements ICategorieService {
 		return cDao.getAllCategories();
 	}
 
-	/*
-	 * (non-Javadoc)
-	 * 
+	/**
 	 * @see fr.adaming.service.ICategorieService#addCategorie(fr.adaming.model.
 	 * Categorie)
 	 */
@@ -49,8 +45,7 @@ public class CategorieServiceImpl implements ICategorieService {
 
 	}
 
-	/*
-	 * (non-Javadoc)
+	/**
 	 * @see
 	 * fr.adaming.service.ICategorieService#updateCategorie(fr.adaming.model.
 	 * Categorie)
@@ -62,8 +57,7 @@ public class CategorieServiceImpl implements ICategorieService {
 		return cDao.updateCategorie(c);
 	}
 
-	/*
-	 * (non-Javadoc)
+	/**
 	 * @see fr.adaming.service.ICategorieService#deleteCategorie(fr.adaming.model.Categorie)
 	 */
 	@Override
@@ -76,8 +70,7 @@ public class CategorieServiceImpl implements ICategorieService {
 		}
 	}
 
-	/*
-	 * (non-Javadoc)
+	/**
 	 * @see fr.adaming.service.ICategorieService#getCategoriebyNomCategorie(fr.adaming.model.Categorie)
 	 */
 	@Override
@@ -85,8 +78,7 @@ public class CategorieServiceImpl implements ICategorieService {
 		return cDao.getCategoriebyNomCategorie(c);
 	}
 	
-	/*
-	 * (non-Javadoc)
+	/**
 	 * @see fr.adaming.service.ICategorieService#getCategoriebyId(fr.adaming.model.Categorie)
 	 */
 	@Override

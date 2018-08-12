@@ -3,9 +3,13 @@ package fr.adaming.model;
 import java.io.Serializable;
 import java.util.List;
 
+
+/**
+ * Definition de la classe Panier
+ */
 public class Panier implements Serializable {
 
-	/*
+	/**
 	 * transformation de l'association UML en JAVA
 	 */
 	private List<LigneCommande> listeCommande;
@@ -19,7 +23,7 @@ public class Panier implements Serializable {
 		super();
 	}
 
-	/*
+	/**
 	 * Getters et setters
 	 */
 	/**

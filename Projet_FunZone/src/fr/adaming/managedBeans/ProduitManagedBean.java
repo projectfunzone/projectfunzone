@@ -17,7 +17,7 @@ import fr.adaming.model.Categorie;
 import fr.adaming.model.Produit;
 import fr.adaming.service.IProduitService;
 
-/*
+/**
  * @author Thibault
  * Manager des Produits
  */
@@ -26,7 +26,7 @@ import fr.adaming.service.IProduitService;
 @RequestScoped
 public class ProduitManagedBean {
 
-	/*
+	/**
 	 * Declaration des attributs du ManagedBean Produit
 	 */
 	HttpSession maSession;
@@ -39,13 +39,14 @@ public class ProduitManagedBean {
 	private List<Produit> listeProduitDebutant;
 
 	private UploadedFile file;
-	/*
+	
+	/**
 	 * Transformation de l'association UML en java
 	 */
 	@EJB
 	private IProduitService pService;
 
-	/*
+	/**
 	 * Constructeur vide du ManagedBean
 	 */
 	public ProduitManagedBean() {
@@ -59,7 +60,7 @@ public class ProduitManagedBean {
 		this.listeProduit = pService.getAllProduits();
 	}
 
-	/*
+	/**
 	 * Declaration des getteurs et setteurs
 	 */
 
@@ -168,21 +169,17 @@ public class ProduitManagedBean {
 		return ((Comparable) value).compareTo(Integer.valueOf(filterText)) > 0;
 	}
 
-	/*
+	/**
 	 * ajouter une nouvelle categorie au site
 	 */
 	public String addProduit() {
 
-		/*
-		 * on charge le dossier dans l'attribut photo de la classe Categorie
-		 */
+		//on charge le dossier dans l'attribut photo de la classe Categorie
 		this.produit.setPhoto(file.getContents());
 
 		Produit pAjout = pService.addProduit(this.produit, this.categorie);
 
-		/*
-		 * on teste ici l'existence de cet ajout
-		 */
+		//on teste ici l'existence de cet ajout
 		if (pAjout.getIdProduit() != 0) {
 
 			// On regarde si dans la description du produit il est fait mention de
@@ -192,78 +189,69 @@ public class ProduitManagedBean {
 				listeProduitDebutant.add(pAjout);
 			}
 
-			/*
-			 * envoie vers la page XHTML accueil de l'administrateur
-			 */
+			//envoie vers la page XHTML accueil de l'administrateur
 			return "accueil";
 
 		} else {
 
 			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Entrée invalide"));
-			/*
-			 * renvoie vers la page XHTML d'ajout d'une categorie
-			 */
+			//renvoie vers la page XHTML d'ajout d'une categorie
 			return "addProduit";
 		}
 	}
 
+	/**
+	 * modifier une produit au site
+	 */
 	public String updateProduit() {
 
 		int verif = pService.updateProduit(this.produit, this.categorie);
 
 		if (verif != 0) {
 
-			/*
-			 * envoie vers la page XHTML accueil de l'administrateur
-			 */
+			//envoie vers la page XHTML accueil de l'administrateur
 			return "accueil";
 
 		} else {
 
 			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Modification invalide"));
-			/*
-			 * renvoie vers la page XHTML d'ajout d'une categorie
-			 */
+			//renvoie vers la page XHTML d'ajout d'une categorie
 			return "updateProduit";
 		}
 	}
 
+	/**
+	 * supprimer une produit du site
+	 */
 	public String deleteProduit() {
 
 		int verif = pService.deleteProduit(this.produit);
 
 		if (verif != 0) {
 
-			/*
-			 * envoie vers la page XHTML accueil de l'administrateur
-			 */
+			//envoie vers la page XHTML accueil de l'administrateur
 			return "accueil";
 
 		} else {
 
 			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Suppression invalide"));
-			/*
-			 * renvoie vers la page XHTML d'ajout d'une categorie
-			 */
+			//renvoie vers la page XHTML d'ajout d'une categorie
 			return "deleteProduit";
 		}
 	}
 
+	/**
+	 * rechercher une categorie par son id
+	 */
 	public String searchProduitbyId() {
 
-		/*
-		 * recherche et stockage de la categorie recherchée
-		 */
+		//recherche et stockage de la categorie recherchée
 		Produit pSearch = pService.getProduitbyId(this.produit);
 
-		/*
-		 * On test le bon résultat de la recherche
-		 */
+		//On test le bon résultat de la recherche
 		if (pSearch != null) {
 
-			/*
-			 * on stocke la recherche dans l'attribut du ManagedBean
-			 */
+			//on stocke la recherche dans l'attribut du ManagedBean
 			this.indice = true;
 			this.produit = pSearch;
 

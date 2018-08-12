@@ -17,7 +17,7 @@ import org.primefaces.model.UploadedFile;
 import fr.adaming.model.Categorie;
 import fr.adaming.service.ICategorieService;
 
-/*
+/**
  * @author Thibault
  * ManagedBean des Categories
  */
@@ -40,23 +40,18 @@ public class CategorieManagedBean implements Serializable {
 	@EJB
 	private ICategorieService cService;
 
-	/*
-	 * Constructeur vide
-	 */
+	//Constructeur vide
 	public CategorieManagedBean() {
 		super();
 		this.categorie = new Categorie();
 		this.indice = false;
 	}
 
+	//initialisation lors de la construction
 	@PostConstruct
 	public void init(){
 		this.listeCategorie = cService.getAllCategories();
 	}
-	
-	/*
-	 * Declaration des getteurs et setteurs
-	 */
 
 	/**
 	 * @return the categorie
@@ -129,16 +124,24 @@ public class CategorieManagedBean implements Serializable {
 	public void setListeCategorieFiltre(List<Categorie> listeCategorieFiltre) {
 		this.listeCategorieFiltre = listeCategorieFiltre;
 	}
-	
+	/**
+	 * @return tist getNomCategorie
+	 */
 	public List<String> getNomCategorie() {
 		return getNomCategorie();
 	}
 
+	/**
+	 * @return tist getDescription
+	 */
 	public List<String> getDescription() {
 		return getDescription();
 	}
 
-	
+	/**
+	 * Methode permettant de filtrer en fonction de la recherche par mot clef
+	 * @return  boolean
+	 */
 	@SuppressWarnings({ "unchecked", "rawtypes" })
 	public boolean filterByPrice(Object value, Object filter, Locale locale) {
 		String filterText = (filter == null) ? null : filter.toString().trim();
@@ -154,90 +157,80 @@ public class CategorieManagedBean implements Serializable {
 	}
 	
 	
-	/*
+	/**
 	 * ajouter une nouvelle categorie au site
 	 */
 	public String addCategorie() {
 
-		/*
-		 * on charge le dossier dans l'attribut photo de la classe Categorie
-		 */
+		//on charge le dossier dans l'attribut photo de la classe Categorie
 		this.categorie.setPhoto(file.getContents());
 		
-		/*
-		 * on teste ici l'existence de cet ajout
-		 */
+		// on teste ici l'existence de cet ajout
 		if (cService.addCategorie(this.categorie).getIdCategorie() != 0) {
 
-			/*
-			 * envoie vers la page XHTML accueil de l'administrateur
-			 */
+			//envoie vers la page XHTML accueil de l'administrateur
 			return "accueil";
 
 		} else {
 
 			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Entrée invalide"));
-			/*
-			 * renvoie vers la page XHTML d'ajout d'une categorie
-			 */
+			
+			// renvoie vers la page XHTML d'ajout d'une categorie
 			return "addCategorie";
 		}
 	}
 
+	/**
+	 * modifier une categorie du site
+	 */
 	public String updateCategorie() {
 
 		if (cService.updateCategorie(this.categorie) != 0) {
 
-			/*
-			 * envoie vers la page XHTML accueil de l'administrateur
-			 */
+			//envoie vers la page XHTML accueil de l'administrateur
 			return "accueil";
 
 		} else {
 
 			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Modification invalide"));
-			/*
-			 * renvoie vers la page XHTML d'ajout d'une categorie
-			 */
+			
+			//renvoie vers la page XHTML d'ajout d'une categorie
 			return "updateCategorie";
 		}
 	}
 
+	/**
+	 * supprimer une categorie du site
+	 */
 	public String deleteCategorie() {
 
 		if (cService.deleteCategorie(this.categorie) != 0) {
 
 			
-			/*
-			 * envoie vers la page XHTML accueil de l'administrateur
-			 */
+			//envoie vers la page XHTML accueil de l'administrateur
 			return "accueil";
 
 		} else {
 
 			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Suppression invalide"));
-			/*
-			 * renvoie vers la page XHTML d'ajout d'une categorie
-			 */
+			
+			//renvoie vers la page XHTML d'ajout d'une categorie
 			return "deleteCategorie";
 		}
 	}
 
+	/**
+	 * rechercher une categorie par son nom
+	 */
 	public String searchCategoriebyNomCategorie() {
 
-		/*
-		 * recherche et stockage de la categorie recherchée
-		 */
+		//recherche et stockage de la categorie recherchée
 		Categorie cSearch = cService.getCategoriebyNomCategorie(this.categorie);
 
-		/*
-		 * On test le bon résultat de la recherche
-		 */
+		//On test le bon résultat de la recherche
 		if (cSearch != null) {
 
-			/*
-			 * on stocke la recherche dans l'attribut du ManagedBean
-			 */
+			//on stocke la recherche dans l'attribut du ManagedBean
 			this.indice = true;
 			this.categorie = cSearch;
 
@@ -247,27 +240,23 @@ public class CategorieManagedBean implements Serializable {
 			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Supression invalide"));
 
 		}
-		/*
-		 * envoie vers la page XHTML recherche mise à jour avec le resultat de la recherche
-		 */
+		//envoie vers la page XHTML recherche mise à jour avec le resultat de la recherche
 		return "searchCategorie";
 	}
 	
+
+	/**
+	 * rechercher une categorie par son id
+	 */
 	public String searchCategoriebyId() {
 
-		/*
-		 * recherche et stockage de la categorie recherchée
-		 */
+		//recherche et stockage de la categorie recherchée
 		Categorie cSearch = cService.getCategoriebyId(this.categorie);
 
-		/*
-		 * On test le bon résultat de la recherche
-		 */
+		//On test le bon résultat de la recherche
 		if (cSearch != null) {
 
-			/*
-			 * on stocke la recherche dans l'attribut du ManagedBean
-			 */
+			//on stocke la recherche dans l'attribut du ManagedBean
 			this.indice = true;
 			this.categorie = cSearch;
 
@@ -277,9 +266,7 @@ public class CategorieManagedBean implements Serializable {
 			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Supression invalide"));
 
 		}
-		/*
-		 * envoie vers la page XHTML recherche mise à jour avec le resultat de la recherche
-		 */
+		//envoie vers la page XHTML recherche mise à jour avec le resultat de la recherche
 		return "searchCategorie";
 	}
 

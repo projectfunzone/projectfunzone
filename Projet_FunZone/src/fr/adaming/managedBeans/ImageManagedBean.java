@@ -5,7 +5,7 @@ import java.util.List;
 import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
  
-/*
+/**
  * Gestionnaire des images sur la page d'accueil
  */
 @ManagedBean(name="imgMB")

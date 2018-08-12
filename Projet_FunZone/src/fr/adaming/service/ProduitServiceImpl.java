@@ -20,15 +20,13 @@ import fr.adaming.model.Produit;
 @Stateful
 public class ProduitServiceImpl implements IProduitService {
 
-	/*
+	/**
 	 * transformation de l'association UML en java et injection dépendance (EJB)
 	 */
 	@EJB
 	private IProduitDao pDao;
 
-	/*
-	 * (non-Javadoc)
-	 * 
+	/**
 	 * @see fr.adaming.service.ICategorieService#getAllCategories()
 	 */
 	@Override
@@ -37,9 +35,7 @@ public class ProduitServiceImpl implements IProduitService {
 		return pDao.getAllProduits();
 	}
 
-	/*
-	 * (non-Javadoc)
-	 * 
+	/**
 	 * @see fr.adaming.service.ICategorieService#addCategorie(fr.adaming.model.
 	 * Categorie)
 	 */
@@ -53,9 +49,7 @@ public class ProduitServiceImpl implements IProduitService {
 
 	}
 
-	/*
-	 * (non-Javadoc)
-	 * 
+	/**
 	 * @see
 	 * fr.adaming.service.ICategorieService#updateCategorie(fr.adaming.model.
 	 * Categorie)
@@ -68,9 +62,7 @@ public class ProduitServiceImpl implements IProduitService {
 		return pDao.updateProduit(pr);
 	}
 
-	/*
-	 * (non-Javadoc)
-	 * 
+	/**
 	 * @see
 	 * fr.adaming.service.ICategorieService#deleteCategorie(fr.adaming.model.
 	 * Categorie)
@@ -93,9 +85,7 @@ public class ProduitServiceImpl implements IProduitService {
 		}
 	}
 
-	/*
-	 * (non-Javadoc)
-	 * 
+	/**
 	 * @see
 	 * fr.adaming.service.ICategorieService#getCategoriebyId(fr.adaming.model.
 	 * Categorie)
