@@ -55,7 +55,7 @@
 
 			<p:column filterBy="#{pr.prix}" headerText="Prix" footerText="Prix"
 				filterFunction="#{pMB.filterByPrice}">
-				<h:outputText value="#{pr.prix}">
+				<h:outputText value="#{pr.prix}" style="color : red">
 					<f:convertNumber currencySymbol="€" type="currency" />
 				</h:outputText>
 			</p:column>
