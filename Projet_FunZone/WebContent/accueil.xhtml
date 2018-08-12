@@ -10,14 +10,14 @@
 </h:head>
 <h:body>
 	<ui:insert>
-		<ui:include src="/templates/header.xhtml"/>
+		<ui:include src="/templates/headerClient.xhtml" />
 	</ui:insert>
 
-<!-- Galerie promotionnelle affichant les produits disponibles sur le site -->
-<p:contentFlow value="#{imgMB.images}" var="image">
-    <p:graphicImage value="resources/images/#{image}" styleClass="content" />
-    <div class="caption">#{image}</div>
-</p:contentFlow>
+	<!-- Galerie promotionnelle affichant les produits disponibles sur le site -->
+	<p:contentFlow value="#{imgMB.images}" var="image">
+		<p:graphicImage value="resources/images/#{image}" styleClass="content" />
+		<div class="caption">#{image}</div>
+	</p:contentFlow>
 
 </h:body>
 </html>
