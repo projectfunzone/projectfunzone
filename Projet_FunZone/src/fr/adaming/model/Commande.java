@@ -39,7 +39,7 @@ public class Commande implements Serializable {
 	 */
 	@ManyToOne
 	@JoinColumn(name="client_id", referencedColumnName="id_client")
-	private Client client;
+	private Client cl;
 	
 	/**
 	 * Transformation de l'association UML en JAVA
@@ -102,5 +102,35 @@ public class Commande implements Serializable {
 		this.dateCommande = dateCommande;
 	}
 
+
+	/**
+	 * @return the cl
+	 */
+	public Client getCl() {
+		return cl;
+	}
+
+	/**
+	 * @param cl the cl to set
+	 */
+	public void setCl(Client cl) {
+		this.cl = cl;
+	}
+
+	/**
+	 * @return the listeLigneCommande
+	 */
+	public List<LigneCommande> getListeLigneCommande() {
+		return listeLigneCommande;
+	}
+
+	/**
+	 * @param listeLigneCommande the listeLigneCommande to set
+	 */
+	public void setListeLigneCommande(List<LigneCommande> listeLigneCommande) {
+		this.listeLigneCommande = listeLigneCommande;
+	}
+
+	
 	
 }

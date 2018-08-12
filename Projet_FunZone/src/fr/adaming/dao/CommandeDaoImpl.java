@@ -30,4 +30,35 @@ public class CommandeDaoImpl implements ICommandeDao {
 		return query.getResultList();
 	}
 
+	@Override
+	public Commande getCommandeById(Commande cmd) {
+		
+		return em.find(Commande.class, cmd.getIdCommande());
+	}
+
+	@SuppressWarnings("unchecked")
+	@Override
+	public List <Commande> getCommandeByIdOrClient(Commande cmd) {
+		String req = "SELECT cmd FROM Commande AS cmd WHERE cmd.idCommande=:pIdCmd OR cmd.cl.idClient=:pIdCl";
+				
+		Query query=em.createQuery(req);
+		
+		query.setParameter("pIdCmd", cmd.getIdCommande());
+		query.setParameter("pIdCl", cmd.getCl().getIdClient());
+		
+		return query.getResultList();
+	}
+	
+	
+	@Override
+	public Commande addCommande(Commande cmd) {
+		em.persist(cmd);
+		return cmd;
+	}
+
+
+	
+	
+	
+
 }

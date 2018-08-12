@@ -39,7 +39,7 @@ public class Client implements Serializable {
 	/**
 	 * Transformation de l'association UML en JAVA
 	 */
-	@OneToMany(mappedBy="client")
+	@OneToMany(mappedBy="cl")
 	private List<Commande> listeCommande;
 
 	// constructeur
