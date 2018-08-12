@@ -14,7 +14,7 @@
 		<p:growl id="messages" />
 
 		<p:menubar>
-			<p:menuitem value="Vente Flash" url="#" icon="ui-icon-tag" />
+			<p:menuitem value="Vente Flash" url="venteFlash.xhtml" icon="ui-icon-tag" />
 			<p:menuitem value="Le kit de départ" url="kit.xhtml"
 				icon="ui-icon-eject" />
 
@@ -25,7 +25,11 @@
 					icon="ui-icon-circle-triangle-e" />
 			</p:submenu>
 
-			<p:menuitem value="Avantage adhérent" url="#" icon="ui-icon-gear" />
+			<p:submenu label="Être adhérent...">
+				<p:menuitem value="Se connecter" url="loginClient.xhtml" icon="ui-icon-person" />
+				<p:menuitem value="Espace personnel" url="updateClientMdp.xhtml" icon="ui-icon-person" />
+				<p:menuitem value="Avantage adhérent" url="avantagesClient.xhtml" icon="ui-icon-gear" />
+			</p:submenu>
 
 			<p:menuitem value="Mon panier" url="panierClient.xhtml"
 				icon="ui-icon-cart" />

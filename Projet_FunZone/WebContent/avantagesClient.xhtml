@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+<h:head>
+	<title></title>
+</h:head>
+<h:body>
+	<ui:insert>
+		<ui:include src="/templates/headerClient.xhtml" />
+	</ui:insert>
+
+	<h:form>
+		<div style="text-align: center">
+			<p:graphicImage value="resources/images/avantages_adherents.jpg"
+				styleClass="content" />
+				<br/>
+			<p:commandLink value="Pas encore client ?" action="addClient.xhtml" />
+		</div>
+	</h:form>
+	<h1 style="color: red; text-align: center">
+		<h:messages />
+	</h1>
+
+
+</h:body>
+</html>
