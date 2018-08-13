@@ -13,8 +13,6 @@ public class Panier implements Serializable {
 	 * transformation de l'association UML en JAVA
 	 */
 	private List<LigneCommande> listeCommande;
-
-	
 	
 	/**
 	 * Constructeur vide
@@ -38,9 +36,6 @@ public class Panier implements Serializable {
 	 */
 	public void setListeCommande(List<LigneCommande> listeCommande) {
 		this.listeCommande = listeCommande;
-	}
-	
-	
-	
+	}	
 	
 }
