@@ -65,12 +65,12 @@ public class PanierServiceImpl implements IPanierService {
 			
 			Date dateFacture=new Date();
 			String objetMail="Votre Facture Funzone du "+dateFacture;
-			String corpsMail="Bonjour Monsieur/Madame "+cl.getNomClient()+", ci-joint, ci-joint votre facture du "+dateFacture+".";
+			String corpsMail="Bonjour Monsieur/Madame "+cl.getNomClient()+", ci-joint votre facture du "+dateFacture+".";
 			
 			String nomPDF="Facture Funzone";
 			String corpsPDF="Bonjour, ci-joint, ci-joint votre facture du "+dateFacture+".\nVotre commande est composé de :\n";
 			
-			this.email(clOut, objetMail, corpsMail, nomPDF, corpsPDF);;
+			this.email(clOut, objetMail, corpsMail, nomPDF, corpsPDF);
 
 			return 1;
 		}
