@@ -6,9 +6,9 @@
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:p="http://primefaces.org/ui">
 <h:head>
-<meta charset="UTF-8"/>
-<title>Modifier un produit</title>
-<h:outputStylesheet library="css" name="style.css"  />
+	<meta charset="UTF-8" />
+	<title>Modifier un produit</title>
+	<h:outputStylesheet library="css" name="style.css" />
 </h:head>
 <body>
 	<ui:insert>
@@ -17,7 +17,17 @@
 
 	<h1>Modifier un produit</h1>
 	<h:form>
+
 		<h:panelGrid columns="2">
+			Id du produit à modifier*: <p:inputText
+				value="#{pMB.produit.idProduit}" label="Id" required="true" />
+		</h:panelGrid>
+		<p:commandButton value="Rechercher" action="#{pMB.searchProduitbyId}"
+			update="@all" />
+		<h:panelGrid columns="2">
+		
+			d Categorie : <h:outputText
+				value="#{pMB.produit.categorie.idCategorie}" />
 			Designation du produit : <h:inputText
 				value="#{pMB.produit.designation}" />
 			Description : <h:inputText value="#{pMB.produit.description}" />
