@@ -169,7 +169,7 @@ public class CategorieManagedBean implements Serializable {
 		if (cService.addCategorie(this.categorie).getIdCategorie() != 0) {
 
 			//envoie vers la page XHTML accueil de l'administrateur
-			return "accueil";
+			return "accueilAdmin";
 
 		} else {
 
@@ -188,7 +188,7 @@ public class CategorieManagedBean implements Serializable {
 		if (cService.updateCategorie(this.categorie) != 0) {
 
 			//envoie vers la page XHTML accueil de l'administrateur
-			return "accueil";
+			return "accueilAdmin";
 
 		} else {
 
@@ -208,7 +208,7 @@ public class CategorieManagedBean implements Serializable {
 
 			
 			//envoie vers la page XHTML accueil de l'administrateur
-			return "accueil";
+			return "accueilAdmin";
 
 		} else {
 

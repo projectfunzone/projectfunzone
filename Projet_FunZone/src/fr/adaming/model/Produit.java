@@ -36,6 +36,8 @@ public class Produit implements Serializable{
 	private double prix;
 	private int quantite;
 	
+	private boolean venteFlash=false;
+	
 	@Transient
 	private boolean selectionne;
 	
@@ -233,6 +235,21 @@ public class Produit implements Serializable{
 	 */
 	public void setImage(String image) {
 		this.image = image;
+	}
+	
+	/**
+	 * @return the venteFlash
+	 */
+	public boolean isVenteFlash() {
+		return venteFlash;
+	}
+
+
+	/**
+	 * @param venteFlash the venteFlash to set
+	 */
+	public void setVenteFlash(boolean venteFlash) {
+		this.venteFlash = venteFlash;
 	}
 
 

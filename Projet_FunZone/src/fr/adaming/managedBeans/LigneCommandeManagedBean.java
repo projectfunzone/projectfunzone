@@ -99,22 +99,22 @@ public class LigneCommandeManagedBean implements Serializable {
 	/**
 	 * ajouter une nouvelle ligne au site
 	 */
-	public String addLigneCommande() {
-
-		
-		//on teste ici l'existence de cet ajout
-		if (lcService.addLigneCommande(this.ligneCommande).getIdLigneCommande()!= 0) {
-
-			//envoie vers la page XHTML accueil de l'administrateur
-			return "";
-
-		} else {
-
-			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Entrée invalide"));
-			//renvoie vers la page XHTML d'ajout d'une categorie
-			return "";
-		}
-	}
+//	public String addLigneCommande() {
+//
+//		
+//		//on teste ici l'existence de cet ajout
+//		if (lcService.addLigneCommande(this.ligneCommande).getIdLigneCommande()!= 0) {
+//
+//			//envoie vers la page XHTML accueil de l'administrateur
+//			return "";
+//
+//		} else {
+//
+//			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Entrée invalide"));
+//			//renvoie vers la page XHTML d'ajout d'une categorie
+//			return "";
+//		}
+//	}
 
 	/**
 	 * modifier une ligne du site

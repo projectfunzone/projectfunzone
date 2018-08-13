@@ -37,16 +37,8 @@ public class ClientManagedBean implements Serializable {
 
 	private List<Client> listeGetClient;
 
+	private HttpSession maSession;
 
-	
-
-	/**
-	 * Constructeur vide avec instanciation d'un client
-	 */
-	public ClientManagedBean() {
-		super();
-		this.cl = new Client();
-	}
 	/**
 	 * permet de récupérer la liste des clients au moment de l'instanciation du
 	 * managedBean
@@ -56,6 +48,13 @@ public class ClientManagedBean implements Serializable {
 		this.listeAllClient = clService.getAllClient();
 	}
 
+	/**
+	 * Constructeur vide avec instanciation d'un client
+	 */
+	public ClientManagedBean() {
+		super();
+		this.cl = new Client();
+	}
 
 	/**
 	 * @return the cl
@@ -160,13 +159,11 @@ public class ClientManagedBean implements Serializable {
 			this.listeAllClient = clService.getAllClient();
 
 			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Le compte a bien été crée"));
-			
-//			clService.sendMail(clOut);
+			return "accueilClient";
 		} else {
 			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Une erreur s'est produit"));
+			return "addClient";
 		}
-
-		return "";
 	}
 
 	/**
@@ -184,11 +181,11 @@ public class ClientManagedBean implements Serializable {
 			this.listeAllClient = clService.getAllClient();
 
 			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Le compte a bien été supprimé"));
+			return "accueilAdmin";
 		} else {
 			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Une erreur s'est produit"));
+			return "deleteClient";
 		}
-
-		return "";
 
 	}
 
@@ -206,11 +203,13 @@ public class ClientManagedBean implements Serializable {
 			this.listeAllClient = clService.getAllClient();
 
 			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("La modif a été prise en compte"));
+			return "accueilAdmin";
 		} else {
 			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Une erreur s'est produit"));
+			return "updateClient";
 		}
 
-		return "";
+		
 	}
 
 	/**
@@ -226,11 +225,13 @@ public class ClientManagedBean implements Serializable {
 		if (verif != 0) {
 
 			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Le mot de passe a été modifié"));
+			return "accueil";
 		} else {
 			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Une erreur s'est produit"));
+			return "updateClientMdp";
 		}
 
-		return "";
+		
 	}
 
 	/**
@@ -245,7 +246,7 @@ public class ClientManagedBean implements Serializable {
 		// client dans la session
 		if (FacesContext.getCurrentInstance().getExternalContext().getSessionMap().get("clSession") != null) {
 			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Vous êtes déjà connecté"));
-			return "";
+			return "accueil";
 		} else {
 			// si le client n'est pas connecter, on appelle la méthode pour
 			// vérifier le mail et le mdp
@@ -257,7 +258,7 @@ public class ClientManagedBean implements Serializable {
 			case 0:
 				FacesContext.getCurrentInstance().addMessage(null,
 						new FacesMessage("Il n'y a pas de compte client associé à cette adresse email"));
-				return "";
+				return "loginClient";
 			// si le retour de la méthode = 1, la connexion a réussi et on
 			// ajoute le client dans la session
 			case 1:
@@ -267,9 +268,9 @@ public class ClientManagedBean implements Serializable {
 				return "accueil";
 			case 2:
 				FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Le mot de passe est erroné"));
-				return "";
+				return "loginClient";
 			default:
-				return "";
+				return "accueil";
 
 			}
 		}
@@ -286,19 +287,19 @@ public class ClientManagedBean implements Serializable {
 
 				FacesContext.getCurrentInstance().addMessage(null,
 						new FacesMessage("La déconnexion n'a pas fonctionné"));
+				return "logoutClient";
 
 			} else {
 
 				FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Vous n'êtes plus connecté"));
-
+				return "accueil";
 			}
 
 		} else {
 			FacesContext.getCurrentInstance().addMessage(null,
 					new FacesMessage("Vous n'êtes pas connecté à un compte client"));
+			return "loginClient";
 		}
-
-		return "";
 
 	}
 	
