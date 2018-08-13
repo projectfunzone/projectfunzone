@@ -2,4 +2,9 @@
 
 body{
 	background-color:black;
+	color : white;
+}
+
+h1,a{
+	color : #2FFF2F;
 }

@@ -37,8 +37,6 @@ public class ClientManagedBean implements Serializable {
 
 	private List<Client> listeGetClient;
 
-	private HttpSession maSession;
-
 	/**
 	 * permet de récupérer la liste des clients au moment de l'instanciation du
 	 * managedBean
@@ -301,12 +299,5 @@ public class ClientManagedBean implements Serializable {
 			return "loginClient";
 		}
 
-	}
-	
-	public String payerCommande (){
-		
-		clService.sendMail(this.cl);
-		
-		return "accueil";
 	}
 }
