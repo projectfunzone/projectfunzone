@@ -6,8 +6,9 @@
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:p="http://primefaces.org/ui">
 <h:head>
-<meta charset="UTF-8"/>
-<title>Afficher la liste des Categories</title>
+	<meta charset="UTF-8" />
+	<title>Afficher la liste des Categories</title>
+	<h:outputStylesheet library="css" name="style.css" />
 
 </h:head>
 <body>
@@ -16,7 +17,7 @@
 	</ui:insert>
 
 	<h1>Liste des catégories</h1>
-	
+
 	<h:form>
 		<p:dataTable var="cat" value="#{catMB.listeCategorie}"
 			widgetVar="categoriesTable"
@@ -32,8 +33,8 @@
 				</p:outputPanel>
 			</f:facet>
 
-			<p:column filterBy="#{cat.idCategorie}" headerText="ID" footerText="ID"
-				filterMatchMode="contains">
+			<p:column filterBy="#{cat.idCategorie}" headerText="ID"
+				footerText="ID" filterMatchMode="contains">
 				<h:outputText value="#{cat.idCategorie}" />
 			</p:column>
 
@@ -46,7 +47,7 @@
 				footerText="Description" filterMatchMode="contains">
 				<h:outputText value="#{cat.description}" />
 			</p:column>
-			
+
 			<p:column headerText="Image">
 				<h:graphicImage value="#{cat.image}"
 					style="width:100px; height:100px" />

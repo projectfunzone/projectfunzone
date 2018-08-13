@@ -7,6 +7,7 @@
 	xmlns:p="http://primefaces.org/ui">
 <h:head>
 	<title></title>
+	<h:outputStylesheet library="css" name="style.css" />
 </h:head>
 <h:body>
 
@@ -23,7 +24,7 @@
 
 		<p:commandButton value="Oui" action="#{clMB.seDeconnecter}"
 			update="@all" />
-			
+
 		<p:commandButton value="Retourner à l'accueil" action="accueil.xhtml" />
 	</h:form>
 
