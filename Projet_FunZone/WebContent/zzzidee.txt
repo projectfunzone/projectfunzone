@@ -1,4 +1,5 @@
 Idee marketing :
+
 slogans "des armes pour les supers heros"
 mannequin/mascote lapin rose
 armure ironman
@@ -6,6 +7,10 @@ armure ironman
 
 
 idee metier:
-- recherche commande par id client
-- recherche commande par date
-- choix des produits dans une liste deroulante pour le client
+- gestions des stocks
+- création d'une vraie facture
+- liste déroulante à la place de la saisie des ID
+- galerie produits à partir de la liste des produits
+- liste des produits/categorie cote back office
+- prix total sur le panier
+- possibilité d'ajouter/soustraire les produits sur la listeProduit et dans le panier
